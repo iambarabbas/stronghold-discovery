@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Analysis — Stronghold Discovery Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-brand">★ STRONGHOLD DISCOVERY</a>
+        <div class="nav-links">
+            <a href="index.html">Summary</a>
+            <a href="conversion.html">Conversion</a>
+            <a href="donors.html" class="active">Donors</a>
+            <a href="seo.html">SEO</a>
+            <a href="digital.html">Digital</a>
+            <a href="competitive.html">Competitive</a>
+            <a href="swot.html">SWOT</a>
+            <a href="recommendations.html">Recommendations</a>
+            <a href="roadmap.html">Roadmap</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="section-number">2</div>
+        <h1>Donor Analysis & Trends</h1>
+        <p>Deep dive into revenue composition, donor behavior, geographic distribution, and concerning trends.</p>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2>Program Overview</h2>
+            <p>Analysis period: January 2025 – December 2025. Data sources: Donorbox (165,818 donations) and FundraiseUp platforms.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="value">$4.08M</div>
+                    <div class="label">Total Revenue</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">165,818</div>
+                    <div class="label">Total Donations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">$24.61</div>
+                    <div class="label">Average Donation</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value success">99.5%</div>
+                    <div class="label">Recurring Revenue</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value success">92.65%</div>
+                    <div class="label">Success Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value success">0.28%</div>
+                    <div class="label">Refund Rate</div>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <h3>✓ Strong Recurring Revenue Engine</h3>
+                <p>99.5% of donations are recurring monthly gifts ($3.87M). This is exceptionally healthy compared to organizations that rely on one-time giving. The low refund rate (0.28%) indicates donor satisfaction.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Revenue Composition</h2>
+            
+            <div class="two-col">
+                <div class="card">
+                    <h3>Recurring vs One-Time</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Donations</th>
+                                <th>Revenue</th>
+                                <th>Avg Gift</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="highlight">
+                                <td><strong>Monthly Recurring</strong></td>
+                                <td>165,002</td>
+                                <td>$3.87M (94.7%)</td>
+                                <td>$23.42</td>
+                            </tr>
+                            <tr>
+                                <td>One-Time</td>
+                                <td>816</td>
+                                <td>$216K (5.3%)</td>
+                                <td>$264.72</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="card">
+                    <h3>Campaign Performance</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Campaign</th>
+                                <th>Revenue</th>
+                                <th>Avg Gift</th>
+                                <th>Success</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Donorbox Recurring</td>
+                                <td>$2.73M</td>
+                                <td>$22.20</td>
+                                <td>93.2%</td>
+                            </tr>
+                            <tr>
+                                <td>Stronghold Monthly</td>
+                                <td>$1.13M</td>
+                                <td>$27.09</td>
+                                <td>91.0%</td>
+                            </tr>
+                            <tr>
+                                <td>Stronghold One-Time</td>
+                                <td>$223K</td>
+                                <td>$183.06</td>
+                                <td style="color: var(--success);">94.2%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="alert alert-info" style="margin-top: 1.5rem;">
+                <h3>💡 Insight: The 11× Gap</h3>
+                <p>One-time donors give <strong>11× more per transaction</strong> ($265 vs $24) but represent less than 0.5% of volume. This suggests massive untapped potential in converting one-time donors to recurring OR in acquiring more one-time/major donors.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Donor Value Segmentation</h2>
+            <p>Breaking down the donor base by gift size reveals the "revenue powerhouse" segment and upgrade opportunities.</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Segment</th>
+                        <th>Gift Range</th>
+                        <th>% of Donors</th>
+                        <th>% of Revenue</th>
+                        <th>Count</th>
+                        <th>Avg Gift</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Small</td>
+                        <td>$10-24</td>
+                        <td>60.2%</td>
+                        <td>41.2%</td>
+                        <td>99,786</td>
+                        <td>$16.83</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong>Medium</strong></td>
+                        <td><strong>$25-49</strong></td>
+                        <td><strong>36.0%</strong></td>
+                        <td><strong>46.2%</strong></td>
+                        <td><strong>59,626</strong></td>
+                        <td><strong>$31.60</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Large</td>
+                        <td>$50-99</td>
+                        <td>2.1%</td>
+                        <td>5.2%</td>
+                        <td>3,478</td>
+                        <td>$61.05</td>
+                    </tr>
+                    <tr>
+                        <td>Major</td>
+                        <td>$100-499</td>
+                        <td>0.6%</td>
+                        <td>3.1%</td>
+                        <td>1,007</td>
+                        <td>$124.39</td>
+                    </tr>
+                    <tr>
+                        <td>Mega</td>
+                        <td>$500+</td>
+                        <td>0.06%</td>
+                        <td>4.2%</td>
+                        <td>95</td>
+                        <td>$1,801.68</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="findings-grid" style="margin-top: 2rem;">
+                <div class="finding-card success">
+                    <span class="tag">Key Insight</span>
+                    <h4>The $25-49 Powerhouse</h4>
+                    <p>This segment is your revenue engine: 36% of donors generating 46% of revenue. Focus retention efforts here—losing these donors hurts the most.</p>
+                </div>
+                <div class="finding-card warning">
+                    <span class="tag">Upgrade Opportunity</span>
+                    <h4>99,786 Small Donors</h4>
+                    <p>96% of donors give less than $50/month. If just 10% of $10-24 donors upgrade to $25, that's <strong>+$81K annually</strong>.</p>
+                </div>
+                <div class="finding-card warning">
+                    <span class="tag">Cultivation Gap</span>
+                    <h4>Only 95 Mega Donors</h4>
+                    <p>0.06% of donors contribute 4.2% of revenue ($171K). Limited major donor cultivation program—significant upside here.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Geographic Distribution</h2>
+            
+            <h3>Top States by Donations</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>State</th>
+                        <th>Donations</th>
+                        <th>Revenue</th>
+                        <th>Avg Donation</th>
+                        <th>% of Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Texas</td>
+                        <td>4,684</td>
+                        <td>$111,598</td>
+                        <td>$23.83</td>
+                        <td>2.8%</td>
+                    </tr>
+                    <tr>
+                        <td>California</td>
+                        <td>4,565</td>
+                        <td>$104,209</td>
+                        <td>$22.83</td>
+                        <td>2.8%</td>
+                    </tr>
+                    <tr>
+                        <td>Florida</td>
+                        <td>3,196</td>
+                        <td>$72,390</td>
+                        <td>$22.65</td>
+                        <td>1.9%</td>
+                    </tr>
+                    <tr>
+                        <td>Washington</td>
+                        <td>1,702</td>
+                        <td>$42,350</td>
+                        <td>$24.88</td>
+                        <td>1.0%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="two-col" style="margin-top: 2rem;">
+                <div class="card">
+                    <h3>Domestic vs International</h3>
+                    <ul>
+                        <li><strong>United States:</strong> 92.6% of monthly donors (25 of 27 new)</li>
+                        <li><strong>South Korea:</strong> 1 monthly donor</li>
+                        <li><strong>Sweden:</strong> 1 monthly donor</li>
+                    </ul>
+                    <p style="font-size: 0.85rem; color: var(--gray-600); margin-top: 1rem;"><strong>Insight:</strong> Strong domestic concentration. International success (though limited) proves payment infrastructure works globally—potential for expansion.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Geographic Health Assessment</h3>
+                    <ul>
+                        <li><strong>Positive:</strong> Top 3 states = only 7.5% of donations. No over-concentration risk.</li>
+                        <li><strong>Positive:</strong> Distribution is geographically dispersed across 50+ states</li>
+                        <li><strong>Opportunity:</strong> Top states under-represented given population and wealth</li>
+                        <li><strong>Opportunity:</strong> Wisconsin (HQ state) not in top donors—local awareness gap?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>The $258K Problem: Failed Payments</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="value danger">6.94%</div>
+                    <div class="label">Payment Failure Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value danger">11,501</div>
+                    <div class="label">Failed Donations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value danger">$258,012</div>
+                    <div class="label">Lost Revenue</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value success">$100K+</div>
+                    <div class="label">Recoverable</div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning">
+                <h3>⚠️ Above Industry Standard</h3>
+                <p>Industry standard failure rate: 3-5%. Stronghold is at 6.94%. Card updater services (Visa Account Updater, Mastercard ABU) can automatically update expired cards and recover <strong>50-70% of failed payments</strong>.</p>
+            </div>
+
+            <div class="card">
+                <h3>Recovery Strategy</h3>
+                <ul>
+                    <li><strong>Implement card updater service:</strong> Automatic updates for expired cards. ~$100K recoverable annually.</li>
+                    <li><strong>Failed payment email campaign:</strong> "Your donation couldn't be processed" with easy update link</li>
+                    <li><strong>Multiple payment methods:</strong> ACH/bank transfer as backup option</li>
+                    <li><strong>Target:</strong> Reduce failure rate from 6.94% to 3.5% = <strong>$129K additional revenue per year</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Engagement Signals</h2>
+            
+            <div class="findings-grid">
+                <div class="finding-card success">
+                    <span class="tag">Strong Signal</span>
+                    <h4>25.7% Cover Processing Fees</h4>
+                    <p>Over a quarter of donors voluntarily add extra to cover transaction costs. This is above industry average and indicates high donor commitment. If we can increase to 35%, that's +$48K annually.</p>
+                </div>
+                <div class="finding-card success">
+                    <span class="tag">Strong Signal</span>
+                    <h4>0.28% Refund Rate</h4>
+                    <p>Exceptionally low refund requests indicate donors are satisfied with their giving and trust the organization. Industry average is 1-2%.</p>
+                </div>
+                <div class="finding-card info">
+                    <span class="tag">Behavioral Pattern</span>
+                    <h4>10-11 AM Peak Donations</h4>
+                    <p>49.3% of all donations process at 10-11 AM, 24.7% at 9-10 AM. This extreme concentration (74% in 2 hours) is automated recurring billing—not organic activity.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Trending Concerns</h2>
+            
+            <div class="alert alert-danger">
+                <h3>⚠️ Declining Monthly Volume: -17.7%</h3>
+                <p>April 2024: 8,385 donations → January 2026: 6,903 donations. Monthly donation count has dropped significantly. <strong>Churn is outpacing acquisition.</strong></p>
+            </div>
+
+            <div class="two-col">
+                <div class="card">
+                    <h3>What the Decline Means</h3>
+                    <ul>
+                        <li>Donor attrition (cancellations, card failures) exceeds new donor acquisition</li>
+                        <li>Only 27 new monthly donors acquired per year (2.25/month)</li>
+                        <li>At current pace, revenue will contract over time</li>
+                        <li>Need to fix acquisition (form) AND reduce churn simultaneously</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>One-Time Giving Anemia</h3>
+                    <ul>
+                        <li>Only 816 one-time donations all year (0.49% of total)</li>
+                        <li>Extremely low for a healthy fundraising program</li>
+                        <li>Suggests either intentional recurring-only focus OR missing major donor/event opportunities</li>
+                        <li>One-time donors are potential major donor pipeline—currently empty</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Quick Win Opportunities</h2>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Opportunity</th>
+                        <th>Target</th>
+                        <th>Annual Revenue Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Failed Payment Recovery</td>
+                        <td>Reduce 6.94% → 3.5%</td>
+                        <td style="color: var(--success);">+$100K</td>
+                    </tr>
+                    <tr>
+                        <td>Fee Coverage Optimization</td>
+                        <td>Increase 25.7% → 35%</td>
+                        <td style="color: var(--success);">+$48K</td>
+                    </tr>
+                    <tr>
+                        <td>Mid-Tier Upgrade Campaign</td>
+                        <td>10% of $10-24 → $25</td>
+                        <td style="color: var(--success);">+$81K</td>
+                    </tr>
+                    <tr>
+                        <td>One-Time → Recurring Conversion</td>
+                        <td>20% of 816 → $25/month</td>
+                        <td style="color: var(--success);">+$49K</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong>Total Quick Wins</strong></td>
+                        <td></td>
+                        <td style="color: var(--success);"><strong>+$278K/year</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; color: var(--navy); margin-bottom: 0.5rem;"><strong>Program Health Grade: B+</strong></p>
+            <p style="color: var(--gray-600);">Strong recurring revenue base, loyal donors, good geographic diversity. But declining volume and limited acquisition are warning signs. The foundation is solid—now focus on fixing the leaks and opening new channels.</p>
+        </div>
+    </div>
+
+    <div class="page-nav">
+        <a href="conversion.html" class="prev">← Back to Conversion</a>
+        <a href="seo.html" class="next">Next: SEO Analysis →</a>
+    </div>
+
+    <footer>
+        <div class="brand">★ PREPARED FOR STRONGHOLD RESCUE & RELIEF ★</div>
+        <p>Discovery Report — XSL Consulting, LLC — February 2026</p>
+    </footer>
+</body>
+</html>

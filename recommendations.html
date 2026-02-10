@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations — Stronghold Discovery Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-brand">★ STRONGHOLD DISCOVERY</a>
+        <div class="nav-links">
+            <a href="index.html">Summary</a>
+            <a href="conversion.html">Conversion</a>
+            <a href="donors.html">Donors</a>
+            <a href="seo.html">SEO</a>
+            <a href="digital.html">Digital</a>
+            <a href="competitive.html">Competitive</a>
+            <a href="swot.html">SWOT</a>
+            <a href="recommendations.html" class="active">Recommendations</a>
+            <a href="roadmap.html">Roadmap</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="section-number">7</div>
+        <h1>Strategic Recommendations</h1>
+        <p>Prioritized actions to recover lost revenue, fix infrastructure, and scale growth.</p>
+    </header>
+
+    <div class="container">
+        <div class="alert alert-danger">
+            <h3>⚠️ Critical Principle: Fix Before Scale</h3>
+            <p><strong>DO NOT</strong> add CTAs or increase ad spend until the donation form is fixed. At 1.4% conversion, scaling traffic wastes budget and frustrates supporters who want to give but cannot. Fix the infrastructure first, then scale.</p>
+        </div>
+
+        <div class="section">
+            <h2>Tier 1: Emergency Actions (Week 1-2)</h2>
+            <p>These must happen immediately. Every day of delay costs money.</p>
+            
+            <div class="rec-item">
+                <div class="rec-number">1</div>
+                <div class="rec-content">
+                    <h4>Fix the Donation Form</h4>
+                    <p>The 98.6% abandonment rate is catastrophic. This is not optimization—it's emergency repair.</p>
+                    <p><strong>Actions:</strong></p>
+                    <ul>
+                        <li>Test donation flow on all browsers (Chrome, Safari, Firefox, Edge) and devices (iOS, Android)</li>
+                        <li>Check payment processor error logs (Stripe/PayPal dashboard) for failed transactions</li>
+                        <li>Install session recording (Hotjar, FullStory, or Microsoft Clarity) to watch actual user behavior</li>
+                        <li>Monitor browser console for JavaScript errors during submission</li>
+                        <li>User testing: Have 5-10 people try to donate $15/month while you watch</li>
+                        <li>A/B test: Modal vs dedicated /donate page</li>
+                    </ul>
+                    <p><strong>Target:</strong> Achieve 20-30% conversion within first week of fix</p>
+                    <div class="rec-tags">
+                        <span class="tag-impact-high">$118,800/year recovered</span>
+                        <span class="tag-effort-med">2 weeks</span>
+                        <span class="tag-timeline">Week 1-2</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rec-item">
+                <div class="rec-number">2</div>
+                <div class="rec-content">
+                    <h4>Fix Broken TikTok Link</h4>
+                    <p>Website links to @strongholdrescue TikTok but the account doesn't exist. Users clicking are directed to a dead end—damaging trust.</p>
+                    <p><strong>Options:</strong></p>
+                    <ul>
+                        <li><strong>Option A:</strong> Create the TikTok account (recommended—Stronghold's footage is perfect for short-form video)</li>
+                        <li><strong>Option B:</strong> Remove the broken link from the website footer</li>
+                    </ul>
+                    <div class="rec-tags">
+                        <span class="tag-impact-med">Trust signal</span>
+                        <span class="tag-effort-low">1 hour</span>
+                        <span class="tag-timeline">This week</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rec-item">
+                <div class="rec-number">3</div>
+                <div class="rec-content">
+                    <h4>Fix 404 Media Page</h4>
+                    <p>The /media page is linked in navigation but returns a broken 404 error.</p>
+                    <p><strong>Options:</strong></p>
+                    <ul>
+                        <li><strong>Option A:</strong> Restore the media page content</li>
+                        <li><strong>Option B:</strong> Redirect to YouTube channel or Newsletter page</li>
+                        <li><strong>Option C:</strong> Remove from navigation until content is ready</li>
+                    </ul>
+                    <div class="rec-tags">
+                        <span class="tag-impact-med">Trust signal</span>
+                        <span class="tag-effort-low">30 minutes</span>
+                        <span class="tag-timeline">This week</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Tier 2: Quick Wins (Week 2-4)</h2>
+            <p>Low-effort, high-impact actions that can be completed quickly.</p>
+
+            <div class="rec-item">
+                <div class="rec-number">4</div>
+                <div class="rec-content">
+                    <h4>Implement Failed Payment Recovery</h4>
+                    <p>6.94% payment failure rate = $258,012 in lost revenue. Industry standard is 3-5%.</p>
+                    <p><strong>Actions:</strong></p>
+                    <ul>
+                        <li>Implement card updater service (Visa Account Updater, Mastercard Automatic Billing Updater)</li>
+                        <li>Create "payment failed" email sequence with easy card update link</li>
+                        <li>Add ACH/bank transfer as backup payment method</li>
+                    </ul>
+                    <p><strong>Target:</strong> Reduce failure rate from 6.94% to 3.5%</p>
+                    <div class="rec-tags">
+                        <span class="tag-impact-high">$100,000+/year recovered</span>
+                        <span class="tag-effort-low">Low effort</span>
+                        <span class="tag-timeline">Week 2-3</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rec-item">
+                <div class="rec-number">5</div>
+                <div class="rec-content">
+                    <h4>Fix Tracking Infrastructure</h4>
+                    <p>Current tracking shows impossible data (4 form_submit events but 8 completions). Can't optimize what you can't measure.</p>
+                    <p><strong>Actions:</strong></p>
+                    <ul>
+                        <li>Fix form_submit event to fire correctly</li>
+                        <li>Implement one-time donation tracking (currently missing 50-70% of donations)</li>
+                        <li>Add "donate_button_click" events to track which pages drive form opens</li>
+                        <li>Pass page context through modal to thank_you page (fix "Broken Link" attribution)</li>
+                        <li>Create GA4 dashboard: form_start → form_submit → thank_you by source</li>
+                    </ul>
+                    <div class="rec-tags">
+                        <span class="tag-impact-high">Enables optimization</span>
+                        <span class="tag-effort-med">Medium effort</span>
+                        <span class="tag-timeline">Week 3-4</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rec-item">
+                <div class="rec-number">6</div>
+                <div class="rec-content">
+                    <h4>Expand Meta Description</h4>
+                    <p>Current: 52 characters. Should be 150-160 for optimal search click-through.</p>
+                    <p><strong>Suggested:</strong> "Stronghold Rescue & Relief sends veteran teams into conflict zones to conduct rescues, provide medical aid, and train local communities. Support our mission for just 50 cents a day."</p>
+                    <div class="rec-tags">
+                        <span class="tag-impact-med">SEO improvement</span>
+                        <span class="tag-effort-low">10 minutes</span>
+                        <span class="tag-timeline">This week</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rec-item">
+                <div class="rec-number">7</div>
+                <div class="rec-content">
+                    <h4>Add Impact Statistics to Homepage</h4>
+                    <p>"By the Numbers" exists in newsletter but isn't on homepage. Numbers build credibility and urgency.</p>
+                    <p><strong>Add prominent section showing:</strong></p>
+                    <ul>
+                        <li>Families rescued/evacuated</li>
+                        <li>Medical treatments provided</li>
+                        <li>Countries served</li>
+                        <li>Years of operations</li>
+                    </ul>
+                    <div class="rec-tags">
+                        <span class="tag-impact-med">Conversion lift</span>
+                        <span class="tag-effort-low">2-3 hours</span>
+                        <span class="tag-timeline">Week 2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Tier 3: Conversion Optimization (Month 2)</h2>
+            <p>Only implement AFTER donation form is fixed and working at 20%+ conversion.</p>
+
+            <div class="rec-item">
+                <div class="rec-number">8</div>
+                <div class="rec-content">
+                    <h4>Add CTAs to High-Traffic Pages</h4>
+                    <p>Multiple pages have thousands of engaged visitors with no donation path.</p>
+                    <p><strong>Priority Pages:</strong></p>
+                    <ul>
+                        <li><strong>Mosul Video Page (19,770 views/year):</strong> Add prominent "Support Our Mission" CTA after video</li>
+                        <li><strong>Media Page (7,155 views/year):</strong> Add "Help Us Continue This Work" CTA</li>
+                        <li><strong>Newsletter Page (6,547 views/year):</strong> Add "Become a Monthly Supporter" at top and bottom</li>
+                        <li><strong>FAQ Page (2,860 views/year):</strong> Add CTA after transparency questions</li>
+                        <li><strong>Contact Page (2,099 views/year):</strong> Add "Support This Work" CTA</li>
+                    </ul>
+                    <p><strong>Expected impact:</strong> 3× form starts = 3× conversions at fixed rate</p>
+                    <div class="rec-tags">
+                        <span class="tag-impact-high">$324,000/year potential</span>
+                        <span class="tag-effort-low">Few hours</span>
+                        <span class="tag-timeline">Month 2</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rec-item">
+                <div class="rec-number">9</div>
+                <div class="rec-content">
+                    <h4>Launch Mid-Tier Donor Upgrade Campaign</h4>
+                    <p>99,786 donors give $10-24/month. The $25-49 segment generates 46% of revenue.</p>
+                    <p><strong>Campaign:</strong> "Upgrade Your Impact" email sequence targeting $10-24 donors</p>
+                    <ul>
+                        <li>Show what $25/month accomplishes vs $15/month</li>
+                        <li>Personalize: "You've been with us for X months..."</li>
+                        <li>One-click upgrade button in email</li>
+                    </ul>
+                    <p><strong>Target:</strong> 10% of $10-24 donors upgrade to $25</p>
+                    <div class="rec-tags">
+                        <span class="tag-impact-high">$81,000/year</span>
+                        <span class="tag-effort-med">Email campaign</span>
+                        <span class="tag-timeline">Month 2</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rec-item">
+                <div class="rec-number">10</div>
+                <div class="rec-content">
+                    <h4>Optimize Fee Coverage Ask</h4>
+                    <p>25.7% of donors cover processing fees—good, but can be better.</p>
+                    <p><strong>A/B test different messaging:</strong></p>
+                    <ul>
+                        <li>"Cover the fees so 100% goes to rescue operations"</li>
+                        <li>"Add $X so your full gift reaches families in need"</li>
+                        <li>Pre-check the fee coverage option (test carefully)</li>
+                    </ul>
+                    <p><strong>Target:</strong> Increase from 25.7% to 35%</p>
+                    <div class="rec-tags">
+                        <span class="tag-impact-med">$48,000/year</span>
+                        <span class="tag-effort-low">A/B test</span>
+                        <span class="tag-timeline">Month 2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Tier 4: Growth & Scale (Month 3-6)</h2>
+            <p>Strategic investments for long-term growth after foundation is solid.</p>
+
+            <div class="rec-item">
+                <div class="rec-number">11</div>
+                <div class="rec-content">
+                    <h4>Apply for Google Ad Grant</h4>
+                    <p>$10,000/month ($120K/year) in free Google Ads for nonprofits. Currently leaving this on the table.</p>
+                    <p><strong>Requirements:</strong></p>
+                    <ul>
+                        <li>Valid 501(c)(3) status ✓</li>
+                        <li>Website with substantial content ✓</li>
+                        <li>Account setup and policy compliance</li>
+                    </ul>
+                    <p><strong>Use for:</strong> Mission-category keywords (veteran charity, humanitarian rescue, etc.)</p>
+                    <div class="rec-tags">
+                        <span class="tag-impact-high">$120,000/year free ads</span>
+                        <span class="tag-effort-med">Application process</span>
+                        <span class="tag-timeline">Month 2-3</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rec-item">
+                <div class="rec-number">12</div>
+                <div class="rec-content">
+                    <h4>Create SEO Content Strategy</h4>
+                    <p>Zero rankings for mission-category keywords. Need 10-15 intent-mapped pages.</p>
+                    <p><strong>Content to create:</strong></p>
+                    <ul>
+                        <li>"Veteran-Led Rescue Operations: How We Work"</li>
+                        <li>"Burma Conflict Relief: What's Happening and How to Help"</li>
+                        <li>"Is Stronghold Rescue & Relief Legitimate?" (trust page)</li>
+                        <li>"Charity With Dignity: Why We Train Locals"</li>
+                        <li>Regional pages: Burma, Afghanistan, Haiti, Venezuela</li>
+                    </ul>
+                    <div class="rec-tags">
+                        <span class="tag-impact-high">Long-term organic growth</span>
+                        <span class="tag-effort-med">Content creation</span>
+                        <span class="tag-timeline">Month 3-4</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rec-item">
+                <div class="rec-number">13</div>
+                <div class="rec-content">
+                    <h4>Develop YouTube Shorts Strategy</h4>
+                    <p>Powerful field footage exists but is underutilized. Short-form video is highest-growth format.</p>
+                    <p><strong>Actions:</strong></p>
+                    <ul>
+                        <li>Cut existing footage into 30-60 second Shorts</li>
+                        <li>Post 3-5 Shorts per week</li>
+                        <li>Repurpose for TikTok (once account created) and Instagram Reels</li>
+                        <li>Add clear CTA in bio: "Join us for $0.50/day"</li>
+                    </ul>
+                    <div class="rec-tags">
+                        <span class="tag-impact-high">New audience reach</span>
+                        <span class="tag-effort-med">Video editing</span>
+                        <span class="tag-timeline">Month 3+</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rec-item">
+                <div class="rec-number">14</div>
+                <div class="rec-content">
+                    <h4>Convert One-Time Donors to Recurring</h4>
+                    <p>816 one-time donors gave $265 average. These are high-value prospects for recurring.</p>
+                    <p><strong>Campaign:</strong> Post-donation email sequence for one-time givers</p>
+                    <ul>
+                        <li>Thank you + impact report (immediate)</li>
+                        <li>"Here's what your gift accomplished" (week 1)</li>
+                        <li>"Join our monthly community for $25/month" (week 2)</li>
+                        <li>Ongoing stewardship + periodic asks</li>
+                    </ul>
+                    <p><strong>Target:</strong> 20% conversion to recurring = 163 new monthly donors</p>
+                    <div class="rec-tags">
+                        <span class="tag-impact-high">$49,000/year</span>
+                        <span class="tag-effort-med">Email automation</span>
+                        <span class="tag-timeline">Month 3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Revenue Impact Summary</h2>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Recommendation</th>
+                        <th>Annual Revenue Impact</th>
+                        <th>Timeline</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fix donation form</td>
+                        <td style="color: var(--success);">$118,800</td>
+                        <td>Week 1-2</td>
+                    </tr>
+                    <tr>
+                        <td>Failed payment recovery</td>
+                        <td style="color: var(--success);">$100,000</td>
+                        <td>Week 2-3</td>
+                    </tr>
+                    <tr>
+                        <td>Add CTAs to high-traffic pages</td>
+                        <td style="color: var(--success);">$324,000</td>
+                        <td>Month 2</td>
+                    </tr>
+                    <tr>
+                        <td>Mid-tier upgrade campaign</td>
+                        <td style="color: var(--success);">$81,000</td>
+                        <td>Month 2</td>
+                    </tr>
+                    <tr>
+                        <td>Fee coverage optimization</td>
+                        <td style="color: var(--success);">$48,000</td>
+                        <td>Month 2</td>
+                    </tr>
+                    <tr>
+                        <td>Google Ad Grant</td>
+                        <td style="color: var(--success);">$120,000 (free ads)</td>
+                        <td>Month 3</td>
+                    </tr>
+                    <tr>
+                        <td>One-time donor conversion</td>
+                        <td style="color: var(--success);">$49,000</td>
+                        <td>Month 3</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong>Total Year 1 Impact</strong></td>
+                        <td style="color: var(--success);"><strong>$840,800+</strong></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; color: var(--navy); margin-bottom: 0.5rem;"><strong>The Path Forward</strong></p>
+            <p style="color: var(--gray-600);">Fix the donation form first—everything else depends on it. Then systematically implement the quick wins, optimize conversion, and scale growth. The opportunity is massive: <strong>$840K+ in recoverable/additional revenue in Year 1</strong>.</p>
+        </div>
+    </div>
+
+    <div class="page-nav">
+        <a href="swot.html" class="prev">← Back to SWOT</a>
+        <a href="roadmap.html" class="next">Next: 6-Month Roadmap →</a>
+    </div>
+
+    <footer>
+        <div class="brand">★ PREPARED FOR STRONGHOLD RESCUE & RELIEF ★</div>
+        <p>Discovery Report — XSL Consulting, LLC — February 2026</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stronghold Rescue & Relief — Discovery Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--navy) 0%, #0f1a2e 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 950px; }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .hero h1 span { color: var(--gold); }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            flex-wrap: wrap;
+        }
+        .hero-meta-item { text-align: center; }
+        .hero-meta-item .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; margin-bottom: 0.25rem; }
+        .hero-meta-item .value { font-size: 1rem; font-weight: 500; }
+        .toc {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+        .toc-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--gray-800);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .toc-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        .toc-item .num {
+            background: var(--navy);
+            color: var(--gold);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .toc-item h3 { font-size: 1rem; color: var(--navy); margin-bottom: 0.25rem; }
+        .toc-item p { font-size: 0.8rem; color: var(--gray-600); margin: 0; }
+        .key-finding {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        .key-finding .metric {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .key-finding .metric.danger { color: var(--danger); }
+        .key-finding .metric.warning { color: var(--warning); }
+        .key-finding .metric.success { color: var(--success); }
+        .key-finding .label { font-size: 0.9rem; color: var(--gray-600); }
+        .key-findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-brand">★ STRONGHOLD DISCOVERY</a>
+        <div class="nav-links">
+            <a href="index.html" class="active">Summary</a>
+            <a href="conversion.html">Conversion</a>
+            <a href="donors.html">Donors</a>
+            <a href="seo.html">SEO</a>
+            <a href="digital.html">Digital</a>
+            <a href="competitive.html">Competitive</a>
+            <a href="swot.html">SWOT</a>
+            <a href="recommendations.html">Recommendations</a>
+            <a href="roadmap.html">Roadmap</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Discovery Report • February 2026</div>
+            <h1>Stronghold Rescue <span>&</span> Relief</h1>
+            <p class="hero-subtitle">A comprehensive strategic analysis of brand, digital presence, donor behavior, conversion funnels, competitive positioning, and growth opportunities.</p>
+            
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <div class="label">Prepared For</div>
+                    <div class="value">Stronghold Leadership</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="label">Prepared By</div>
+                    <div class="value">XSL Consulting, LLC</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="label">Analysis Period</div>
+                    <div class="value">Feb 2025 – Jan 2026</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="label">Data Sources</div>
+                    <div class="value">GA4, Ahrefs, Donorbox, FundraiseUp</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="section">
+            <h2>The Bottom Line</h2>
+            <p style="font-size: 1.1rem;">Stronghold has built an impressive <strong>$4M recurring revenue engine</strong> with a loyal donor base—but it's showing signs of plateau. The donation form has a catastrophic technical failure causing 98.6% abandonment. SEO visibility is near-zero. Donor acquisition isn't keeping pace with churn. Without intervention, revenue will decline.</p>
+            
+            <p style="font-size: 1.1rem; margin-top: 1rem;"><strong>The good news:</strong> The problems are fixable, and the upside is massive. Fixing the donation form alone could recover <strong>$118,000+ annually</strong>. Combined with the other opportunities identified in this report, the three-year revenue potential exceeds <strong>$1 million in recoverable/additional revenue</strong>.</p>
+        </div>
+
+        <div class="alert alert-danger">
+            <h3>🚨 Revenue Emergency: 98.6% Form Abandonment</h3>
+            <p>576 users tried to become monthly donors in 90 days. Only 8 succeeded. This is a catastrophic technical failure—not normal user behavior. Every day this continues costs Stronghold approximately <strong>$325 in lost lifetime value</strong>.</p>
+        </div>
+
+        <div class="section">
+            <h2>Key Metrics at a Glance</h2>
+            <div class="key-findings-grid">
+                <div class="key-finding">
+                    <div class="metric danger">98.6%</div>
+                    <div class="label">Form Abandonment Rate</div>
+                </div>
+                <div class="key-finding">
+                    <div class="metric">$4.08M</div>
+                    <div class="label">Annual Revenue (FY25)</div>
+                </div>
+                <div class="key-finding">
+                    <div class="metric warning">27</div>
+                    <div class="label">New Monthly Donors/Year</div>
+                </div>
+                <div class="key-finding">
+                    <div class="metric warning">-17.7%</div>
+                    <div class="label">Donor Count Decline</div>
+                </div>
+                <div class="key-finding">
+                    <div class="metric danger">0</div>
+                    <div class="label">Non-Branded SEO Keywords</div>
+                </div>
+                <div class="key-finding">
+                    <div class="metric warning">6.94%</div>
+                    <div class="label">Payment Failure Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Critical Findings Summary</h2>
+            <div class="findings-grid">
+                <div class="finding-card critical">
+                    <span class="tag">Critical</span>
+                    <h4>Donation Form is Broken</h4>
+                    <p>98.6% of users who start the donation form never complete it. Industry standard is 60-70%. This 30+ point gap indicates a technical failure, not user behavior. Estimated loss: <strong>$356,000 over 3 years</strong>.</p>
+                </div>
+                <div class="finding-card critical">
+                    <span class="tag">Critical</span>
+                    <h4>Invisible in Search</h4>
+                    <p>Stronghold ranks for zero non-branded keywords. Users searching "veteran charity" or "humanitarian evacuation" will never find you. Competitors capture all this traffic.</p>
+                </div>
+                <div class="finding-card warning">
+                    <span class="tag">Warning</span>
+                    <h4>Churn Outpacing Acquisition</h4>
+                    <p>Monthly donation count dropped 17.7% (8,385 → 6,903). Only acquiring 27 new monthly donors per year—not enough to replace attrition.</p>
+                </div>
+                <div class="finding-card warning">
+                    <span class="tag">Warning</span>
+                    <h4>$258K in Failed Payments</h4>
+                    <p>6.94% payment failure rate (industry standard: 3-5%). 11,501 failed donations = $258,012 in lost revenue. Card updater services could recover 50-70%.</p>
+                </div>
+                <div class="finding-card success">
+                    <span class="tag">Strength</span>
+                    <h4>Strong Recurring Base</h4>
+                    <p>99.5% of revenue is recurring monthly donations. This is exceptionally strong. Average gift of $24.61 with 165,818 total donations last year.</p>
+                </div>
+                <div class="finding-card success">
+                    <span class="tag">Strength</span>
+                    <h4>Engaged Donors</h4>
+                    <p>25.7% of donors voluntarily cover processing fees—well above industry average. Low refund rate (0.28%). These are loyal supporters.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Report Contents</h2>
+            <p>Click any section to dive into the detailed analysis and insights.</p>
+            <div class="toc">
+                <a href="conversion.html" class="toc-item">
+                    <div class="num">1</div>
+                    <div>
+                        <h3>Conversion Crisis</h3>
+                        <p>98.6% abandonment, root causes, financial impact</p>
+                    </div>
+                </a>
+                <a href="donors.html" class="toc-item">
+                    <div class="num">2</div>
+                    <div>
+                        <h3>Donor Analysis</h3>
+                        <p>Revenue trends, segmentation, geographic data</p>
+                    </div>
+                </a>
+                <a href="seo.html" class="toc-item">
+                    <div class="num">3</div>
+                    <div>
+                        <h3>SEO & Discoverability</h3>
+                        <p>Keyword gaps, backlinks, content opportunities</p>
+                    </div>
+                </a>
+                <a href="digital.html" class="toc-item">
+                    <div class="num">4</div>
+                    <div>
+                        <h3>Digital & Social Audit</h3>
+                        <p>Website issues, social media presence, accessibility</p>
+                    </div>
+                </a>
+                <a href="competitive.html" class="toc-item">
+                    <div class="num">5</div>
+                    <div>
+                        <h3>Competitive Analysis</h3>
+                        <p>Peer comparison, positioning, differentiators</p>
+                    </div>
+                </a>
+                <a href="swot.html" class="toc-item">
+                    <div class="num">6</div>
+                    <div>
+                        <h3>SWOT Analysis</h3>
+                        <p>Strengths, weaknesses, opportunities, threats</p>
+                    </div>
+                </a>
+                <a href="recommendations.html" class="toc-item">
+                    <div class="num">7</div>
+                    <div>
+                        <h3>Recommendations</h3>
+                        <p>Prioritized action items with revenue impact</p>
+                    </div>
+                </a>
+                <a href="roadmap.html" class="toc-item">
+                    <div class="num">8</div>
+                    <div>
+                        <h3>6-Month Roadmap</h3>
+                        <p>Phased implementation plan and milestones</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; color: var(--navy); margin-bottom: 0.5rem;"><strong>Total Revenue Recovery Potential</strong></p>
+            <div class="stat-giant success" style="font-size: 4rem;">$1.18M+</div>
+            <p style="color: var(--gray-600); margin-top: 0.5rem;">over 3 years vs. current trajectory</p>
+        </div>
+    </div>
+
+    <div class="page-nav">
+        <span></span>
+        <a href="conversion.html" class="next">Next: Conversion Crisis →</a>
+    </div>
+
+    <footer>
+        <div class="brand">★ PREPARED FOR STRONGHOLD RESCUE & RELIEF ★</div>
+        <p>Discovery Report — XSL Consulting, LLC — February 2026</p>
+    </footer>
+</body>
+</html>

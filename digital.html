@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital & Social Audit — Stronghold Discovery Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-brand">★ STRONGHOLD DISCOVERY</a>
+        <div class="nav-links">
+            <a href="index.html">Summary</a>
+            <a href="conversion.html">Conversion</a>
+            <a href="donors.html">Donors</a>
+            <a href="seo.html">SEO</a>
+            <a href="digital.html" class="active">Digital</a>
+            <a href="competitive.html">Competitive</a>
+            <a href="swot.html">SWOT</a>
+            <a href="recommendations.html">Recommendations</a>
+            <a href="roadmap.html">Roadmap</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="section-number">4</div>
+        <h1>Digital & Social Audit</h1>
+        <p>Website health, social media presence, and accessibility analysis.</p>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2>Website Health Scores</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="value success">72</div>
+                    <div class="label">SEO Score</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value warning">65</div>
+                    <div class="label">UX/UI Score</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value warning">62</div>
+                    <div class="label">Accessibility</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value success">85</div>
+                    <div class="label">Mobile Ready</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value success">90</div>
+                    <div class="label">Security</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Website Technical Assessment</h2>
+            
+            <h3>What's Working Well</h3>
+            <div class="findings-grid">
+                <div class="finding-card success">
+                    <span class="tag">Strength</span>
+                    <h4>Clear Mission Statement</h4>
+                    <p>Immediately visible what the organization does. "Charity With Dignity" positioning is unique and compelling on first impression.</p>
+                </div>
+                <div class="finding-card success">
+                    <span class="tag">Strength</span>
+                    <h4>HTTPS & Modern Hosting</h4>
+                    <p>Secure connection, HTTP/2 enabled, Squarespace CDN provides reliable infrastructure and fast load times.</p>
+                </div>
+                <div class="finding-card success">
+                    <span class="tag">Strength</span>
+                    <h4>Responsive Design</h4>
+                    <p>Mobile-friendly viewport configured, responsive images with srcset, good rendering on mobile devices.</p>
+                </div>
+                <div class="finding-card success">
+                    <span class="tag">Strength</span>
+                    <h4>Image Optimization</h4>
+                    <p>Lazy loading implemented, multiple image sizes served, good performance practices.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Issues Identified</h3>
+            <div class="findings-grid">
+                <div class="finding-card critical">
+                    <span class="tag">Broken</span>
+                    <h4>Media Page Returns 404</h4>
+                    <p>The /media page is linked in navigation but returns a completely broken 404 error. Visitors clicking this link hit a dead end, damaging trust.</p>
+                </div>
+                <div class="finding-card critical">
+                    <span class="tag">SEO Issue</span>
+                    <h4>Meta Description Too Short</h4>
+                    <p>Current: 52 characters ("We protect and care for families in conflict zones."). Should be 150-160 characters for optimal search click-through. Missing keywords.</p>
+                </div>
+                <div class="finding-card warning">
+                    <span class="tag">UX Issue</span>
+                    <h4>No Impact Metrics on Homepage</h4>
+                    <p>"By the Numbers" exists in newsletter but isn't prominently featured on homepage. Missing opportunity to build credibility immediately.</p>
+                </div>
+                <div class="finding-card warning">
+                    <span class="tag">UX Issue</span>
+                    <h4>Single-Page Limitation</h4>
+                    <p>All content on one long scroll. No separate About, Impact, or Stories pages. Limits SEO potential and user navigation options.</p>
+                </div>
+                <div class="finding-card warning">
+                    <span class="tag">Navigation</span>
+                    <h4>/What-We-Do Redirect Issue</h4>
+                    <p>Returns HTTP 302 (temporary redirect) but receives 78 internal links. SEO equity being lost through temporary redirect.</p>
+                </div>
+                <div class="finding-card warning">
+                    <span class="tag">Trust Signal</span>
+                    <h4>Social Links Hidden</h4>
+                    <p>Social media links only visible in 404 error page footer—not in main site footer. Users can't easily find/follow on social.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Accessibility Analysis (WCAG 2.1)</h2>
+            
+            <div class="two-col">
+                <div class="card">
+                    <h3 style="color: var(--success);">✓ What's Working</h3>
+                    <ul>
+                        <li><strong>ARIA Labels Present:</strong> Navigation, search, menu buttons have proper aria-labels</li>
+                        <li><strong>Search Form Role:</strong> Uses role="search" for screen readers</li>
+                        <li><strong>Logo Alt Text:</strong> Brand logo has descriptive alt text</li>
+                        <li><strong>Language Attribute:</strong> HTML lang="en-US" properly set</li>
+                        <li><strong>Semantic Headings:</strong> Proper H1→H2→H3 hierarchy maintained</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3 style="color: var(--danger);">✗ Issues Found</h3>
+                    <ul>
+                        <li><strong>Empty Alt Attributes:</strong> Many icons have alt="" without aria-hidden</li>
+                        <li><strong>No Skip Navigation:</strong> Missing "Skip to main content" link for keyboard users (WCAG Level A violation)</li>
+                        <li><strong>Filename Alt Text:</strong> Some images use filenames like "Mission Statement WHITE PNG.png" as alt text</li>
+                        <li><strong>Focus Indicators:</strong> Custom focus styles may not be visible enough</li>
+                        <li><strong>Color Contrast:</strong> Some light text on image backgrounds may not meet 4.5:1 ratio</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="alert alert-warning" style="margin-top: 1.5rem;">
+                <h3>⚠️ Accessibility Quick Fixes</h3>
+                <p><strong>High Priority:</strong> Add "Skip to main content" link. Fix empty alt="" on icons (add aria-hidden="true" for decorative, descriptive text for functional). These changes take minimal effort but significantly improve experience for users with disabilities.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Page Performance Analysis</h2>
+            <p>Traffic and engagement data from GA4 (February 2025 – February 2026).</p>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Page</th>
+                        <th>Annual Views</th>
+                        <th>Avg Time</th>
+                        <th>Donation CTA?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Homepage</td>
+                        <td>54,380</td>
+                        <td>34.7s</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong>Mosul Video Page</strong></td>
+                        <td><strong>19,770</strong></td>
+                        <td>—</td>
+                        <td style="color: var(--danger);"><strong>NO ⚠️</strong></td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong>Media Page</strong></td>
+                        <td><strong>7,155</strong></td>
+                        <td>—</td>
+                        <td style="color: var(--danger);"><strong>NO ⚠️</strong></td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong>Newsletter Page</strong></td>
+                        <td><strong>6,547</strong></td>
+                        <td>—</td>
+                        <td style="color: var(--danger);"><strong>NO ⚠️</strong></td>
+                    </tr>
+                    <tr>
+                        <td>FAQ Page</td>
+                        <td>2,860</td>
+                        <td>54.6s</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>Contact Page</td>
+                        <td>2,099</td>
+                        <td>40.3s</td>
+                        <td>No</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert alert-danger" style="margin-top: 1.5rem;">
+                <h3>🚨 High-Traffic Pages Missing Donation CTAs</h3>
+                <p>The Mosul video page (19,770 views), Media page (7,155 views), and Newsletter page (6,547 views) have <strong>no donation call-to-action</strong>. These are engaged visitors with no conversion path. Once the form is fixed, adding CTAs here could drive significant additional donations.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Social Media Audit</h2>
+            
+            <div class="findings-grid">
+                <div class="finding-card success">
+                    <span class="tag">Best Performing</span>
+                    <h4>YouTube — @StrongholdRescue</h4>
+                    <p><strong>Status:</strong> Active, multiple videos<br>
+                    <strong>Content:</strong> Powerful field footage—boat ambulance, Burma operations, medical work, training programs<br>
+                    <strong>Insight:</strong> This is Stronghold's strongest asset. The Mosul video alone has 19,770 annual views. Field footage resonates emotionally and builds trust.</p>
+                </div>
+                
+                <div class="finding-card warning">
+                    <span class="tag">Underperforming</span>
+                    <h4>X/Twitter — @strongholdresc</h4>
+                    <p><strong>Followers:</strong> 226<br>
+                    <strong>Following:</strong> 1<br>
+                    <strong>Joined:</strong> June 2023<br>
+                    <strong>Insight:</strong> Following only 1 account signals inactive community building. Low engagement, limited reach. Needs active management or deprioritization.</p>
+                </div>
+                
+                <div class="finding-card warning">
+                    <span class="tag">Limited Data</span>
+                    <h4>Instagram — @strongholdrescue</h4>
+                    <p><strong>Status:</strong> Account exists, requires login to view<br>
+                    <strong>Insight:</strong> Unable to audit engagement without access. Instagram is critical for visual storytelling—should be a priority platform given Stronghold's compelling imagery.</p>
+                </div>
+                
+                <div class="finding-card warning">
+                    <span class="tag">Important for Demographic</span>
+                    <h4>Facebook — strongholdrescue</h4>
+                    <p><strong>Status:</strong> Page exists, active<br>
+                    <strong>Insight:</strong> Critical for older donor demographic who gives monthly. Needs engagement audit with access to page analytics.</p>
+                </div>
+                
+                <div class="finding-card critical">
+                    <span class="tag">Broken</span>
+                    <h4>TikTok — @strongholdrescue</h4>
+                    <p><strong>Status:</strong> ACCOUNT DOES NOT EXIST<br>
+                    <strong>Problem:</strong> Website links to this handle but the account doesn't exist. Users clicking are directed to a dead end. Immediate fix required: create account or remove broken link.</p>
+                </div>
+                
+                <div class="finding-card success">
+                    <span class="tag">Potential</span>
+                    <h4>LinkedIn — strongholdrescue</h4>
+                    <p><strong>Status:</strong> Company page exists<br>
+                    <strong>Insight:</strong> Good for corporate giving and professional partnerships. Underutilized channel for reaching business leaders who could become major donors.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Device & Traffic Analysis</h2>
+            
+            <div class="two-col">
+                <div class="card">
+                    <h3>Device Distribution</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Device</th>
+                                <th>% of Users</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="highlight">
+                                <td><strong>Mobile</strong></td>
+                                <td><strong>65.6%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Desktop</td>
+                                <td>31.7%</td>
+                            </tr>
+                            <tr>
+                                <td>Tablet</td>
+                                <td>2.7%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 0.85rem; color: var(--gray-600); margin-top: 0.5rem;"><strong>Insight:</strong> Two-thirds of users are on mobile. The donation form MUST work flawlessly on mobile devices. Current 98.6% abandonment may be mobile-related.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Traffic Sources (90-Day)</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Source</th>
+                                <th>Users</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Direct</td>
+                                <td>~40%</td>
+                            </tr>
+                            <tr>
+                                <td>Organic Search</td>
+                                <td>~25%</td>
+                            </tr>
+                            <tr>
+                                <td>Social</td>
+                                <td>~20%</td>
+                            </tr>
+                            <tr>
+                                <td>Referral</td>
+                                <td>~15%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 0.85rem; color: var(--gray-600); margin-top: 0.5rem;"><strong>Insight:</strong> High direct traffic suggests strong brand awareness among existing audience. Low organic = growth opportunity.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Recommended Actions</h2>
+            
+            <div class="card">
+                <h4>Immediate (This Week)</h4>
+                <ul>
+                    <li>Fix broken TikTok link (create account or remove link)</li>
+                    <li>Fix 404 Media page</li>
+                    <li>Add social links to main site footer</li>
+                </ul>
+                
+                <h4>Short-Term (Weeks 2-4)</h4>
+                <ul>
+                    <li>Expand meta description to 150-160 characters</li>
+                    <li>Add skip navigation link for accessibility</li>
+                    <li>Fix /What-We-Do 302 redirect</li>
+                    <li>Add donation CTAs to high-traffic pages (after form fix)</li>
+                </ul>
+                
+                <h4>Medium-Term (Month 2-3)</h4>
+                <ul>
+                    <li>Add impact statistics section to homepage</li>
+                    <li>Develop YouTube Shorts strategy to repurpose field footage</li>
+                    <li>Audit and optimize Instagram presence</li>
+                    <li>Create dedicated landing pages (About, Impact, Stories)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; color: var(--navy); margin-bottom: 0.5rem;"><strong>Digital Presence Grade: C+</strong></p>
+            <p style="color: var(--gray-600);">Strong technical foundation (security, mobile, hosting) but held back by broken links, missing CTAs on high-traffic pages, and fragmented social presence. Quick fixes can move this to B+ within weeks.</p>
+        </div>
+    </div>
+
+    <div class="page-nav">
+        <a href="seo.html" class="prev">← Back to SEO</a>
+        <a href="competitive.html" class="next">Next: Competitive Analysis →</a>
+    </div>
+
+    <footer>
+        <div class="brand">★ PREPARED FOR STRONGHOLD RESCUE & RELIEF ★</div>
+        <p>Discovery Report — XSL Consulting, LLC — February 2026</p>
+    </footer>
+</body>
+</html>

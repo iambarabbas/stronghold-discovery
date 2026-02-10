@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6-Month Roadmap — Stronghold Discovery Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .phase-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        .phase-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .phase-badge {
+            background: var(--navy);
+            color: var(--gold);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .phase-card.emergency { border-left: 5px solid var(--danger); }
+        .phase-card.quickwins { border-left: 5px solid var(--warning); }
+        .phase-card.optimize { border-left: 5px solid var(--gold); }
+        .phase-card.growth { border-left: 5px solid var(--success); }
+        .phase-card.scale { border-left: 5px solid #1976d2; }
+        .milestone {
+            background: var(--gray-100);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+        }
+        .milestone h4 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .milestone p { margin: 0; font-size: 0.9rem; color: var(--gray-600); }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .kpi-item {
+            background: var(--cream);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .kpi-item .value {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--navy);
+        }
+        .kpi-item .label {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+        }
+        .gantt-simple {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+        .gantt-row {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .gantt-row:last-child { border-bottom: none; }
+        .gantt-label {
+            width: 200px;
+            flex-shrink: 0;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .gantt-bars {
+            display: flex;
+            flex: 1;
+            gap: 2px;
+        }
+        .gantt-month {
+            flex: 1;
+            min-width: 60px;
+            height: 24px;
+            background: var(--gray-100);
+            border-radius: 4px;
+        }
+        .gantt-month.active-danger { background: var(--danger); }
+        .gantt-month.active-warning { background: var(--warning); }
+        .gantt-month.active-gold { background: var(--gold); }
+        .gantt-month.active-success { background: var(--success); }
+        .gantt-month.active-blue { background: #1976d2; }
+        .gantt-header {
+            display: flex;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .gantt-header span {
+            flex: 1;
+            min-width: 60px;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+        .gantt-header .label-spacer { width: 200px; flex-shrink: 0; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-brand">★ STRONGHOLD DISCOVERY</a>
+        <div class="nav-links">
+            <a href="index.html">Summary</a>
+            <a href="conversion.html">Conversion</a>
+            <a href="donors.html">Donors</a>
+            <a href="seo.html">SEO</a>
+            <a href="digital.html">Digital</a>
+            <a href="competitive.html">Competitive</a>
+            <a href="swot.html">SWOT</a>
+            <a href="recommendations.html">Recommendations</a>
+            <a href="roadmap.html" class="active">Roadmap</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="section-number">8</div>
+        <h1>6-Month Roadmap</h1>
+        <p>Phased implementation plan with milestones, KPIs, and expected outcomes.</p>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2>Implementation Timeline</h2>
+            
+            <div class="gantt-simple">
+                <div class="gantt-header">
+                    <span class="label-spacer"></span>
+                    <span>Month 1</span>
+                    <span>Month 2</span>
+                    <span>Month 3</span>
+                    <span>Month 4</span>
+                    <span>Month 5</span>
+                    <span>Month 6</span>
+                </div>
+                <div class="gantt-row">
+                    <div class="gantt-label">🚨 Form Fix (Emergency)</div>
+                    <div class="gantt-bars">
+                        <div class="gantt-month active-danger"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                    </div>
+                </div>
+                <div class="gantt-row">
+                    <div class="gantt-label">⚡ Quick Wins</div>
+                    <div class="gantt-bars">
+                        <div class="gantt-month active-warning"></div>
+                        <div class="gantt-month active-warning"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                    </div>
+                </div>
+                <div class="gantt-row">
+                    <div class="gantt-label">📈 Conversion Optimization</div>
+                    <div class="gantt-bars">
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month active-gold"></div>
+                        <div class="gantt-month active-gold"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                    </div>
+                </div>
+                <div class="gantt-row">
+                    <div class="gantt-label">🚀 Growth Initiatives</div>
+                    <div class="gantt-bars">
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month active-success"></div>
+                        <div class="gantt-month active-success"></div>
+                        <div class="gantt-month active-success"></div>
+                        <div class="gantt-month"></div>
+                    </div>
+                </div>
+                <div class="gantt-row">
+                    <div class="gantt-label">📊 Scale & Optimize</div>
+                    <div class="gantt-bars">
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month"></div>
+                        <div class="gantt-month active-blue"></div>
+                        <div class="gantt-month active-blue"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Phase 1: Emergency Fix</h2>
+            <p class="phase-badge" style="display: inline-block; background: var(--danger); color: white;">Weeks 1-2 | CRITICAL</p>
+            
+            <div class="phase-card emergency">
+                <h3>Fix the Revenue Leak</h3>
+                <p>The donation form's 98.6% abandonment rate is costing ~$325/day in lost lifetime value. This phase focuses exclusively on making the form functional.</p>
+                
+                <div class="milestone">
+                    <h4>Week 1: Diagnostic</h4>
+                    <ul>
+                        <li>Technical audit across all browsers and devices</li>
+                        <li>Payment processor error log review</li>
+                        <li>Install session recording (Hotjar/Clarity)</li>
+                        <li>User testing with 5-10 real users</li>
+                        <li>Identify root cause of failure</li>
+                    </ul>
+                </div>
+                
+                <div class="milestone">
+                    <h4>Week 2: Implementation</h4>
+                    <ul>
+                        <li>Fix identified technical issues</li>
+                        <li>A/B test: modal vs dedicated /donate page</li>
+                        <li>Add progress indicators if keeping modal</li>
+                        <li>Implement form state persistence</li>
+                        <li>Monitor conversion rate daily</li>
+                    </ul>
+                </div>
+
+                <h4>Success Criteria</h4>
+                <div class="kpi-grid">
+                    <div class="kpi-item">
+                        <div class="value">20-30%</div>
+                        <div class="label">Form Conversion Rate</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="value">~50</div>
+                        <div class="label">Monthly Donors (from 8)</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="value">Working</div>
+                        <div class="label">form_submit Tracking</div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>Expected Revenue Impact:</strong> <span style="color: var(--success); font-weight: 700;">$118,800/year recovered</span></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Phase 2: Quick Wins</h2>
+            <p class="phase-badge" style="display: inline-block; background: var(--warning); color: white;">Weeks 2-4</p>
+            
+            <div class="phase-card quickwins">
+                <h3>Low-Effort, High-Impact Fixes</h3>
+                <p>Actions that take minimal time but deliver immediate value. Can run in parallel with Phase 1.</p>
+                
+                <div class="milestone">
+                    <h4>Immediate (This Week)</h4>
+                    <ul>
+                        <li>Fix broken TikTok link (create account or remove)</li>
+                        <li>Fix 404 Media page</li>
+                        <li>Add social links to main site footer</li>
+                        <li>Expand meta description to 155 characters</li>
+                    </ul>
+                </div>
+                
+                <div class="milestone">
+                    <h4>Week 2-3</h4>
+                    <ul>
+                        <li>Implement card updater service (Visa/Mastercard)</li>
+                        <li>Create "payment failed" email sequence</li>
+                        <li>Add impact statistics to homepage</li>
+                        <li>Fix /What-We-Do 302 redirect → 301</li>
+                    </ul>
+                </div>
+                
+                <div class="milestone">
+                    <h4>Week 3-4</h4>
+                    <ul>
+                        <li>Fix tracking infrastructure (form_submit event)</li>
+                        <li>Implement one-time donation tracking</li>
+                        <li>Add donate_button_click events</li>
+                        <li>Create GA4 conversion dashboard</li>
+                    </ul>
+                </div>
+
+                <h4>Success Criteria</h4>
+                <div class="kpi-grid">
+                    <div class="kpi-item">
+                        <div class="value">3.5%</div>
+                        <div class="label">Payment Failure Rate (from 6.94%)</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="value">0</div>
+                        <div class="label">Broken Links</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="value">Working</div>
+                        <div class="label">Full Event Tracking</div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>Expected Revenue Impact:</strong> <span style="color: var(--success); font-weight: 700;">$100,000+/year recovered from failed payments</span></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Phase 3: Conversion Optimization</h2>
+            <p class="phase-badge" style="display: inline-block; background: var(--gold); color: var(--navy);">Month 2-3</p>
+            
+            <div class="phase-card optimize">
+                <h3>Maximize Value from Existing Traffic</h3>
+                <p>Only begin this phase AFTER donation form is confirmed working at 20%+ conversion.</p>
+                
+                <div class="milestone">
+                    <h4>Month 2: Add Conversion Paths</h4>
+                    <ul>
+                        <li>Add donation CTAs to Mosul video page (19,770 views)</li>
+                        <li>Add CTAs to Media page (7,155 views)</li>
+                        <li>Add CTAs to Newsletter page (6,547 views)</li>
+                        <li>Add CTAs to FAQ and Contact pages</li>
+                        <li>Implement sticky donate button on mobile</li>
+                    </ul>
+                </div>
+                
+                <div class="milestone">
+                    <h4>Month 2-3: Donor Upgrades</h4>
+                    <ul>
+                        <li>Launch mid-tier upgrade campaign ($10-24 → $25)</li>
+                        <li>A/B test fee coverage messaging (target: 35%)</li>
+                        <li>Create donor testimonial section</li>
+                        <li>Add "your impact" messaging throughout site</li>
+                    </ul>
+                </div>
+
+                <h4>Success Criteria</h4>
+                <div class="kpi-grid">
+                    <div class="kpi-item">
+                        <div class="value">3×</div>
+                        <div class="label">Form Starts (from CTAs)</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="value">35%</div>
+                        <div class="label">Fee Coverage Rate</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="value">10%</div>
+                        <div class="label">Small Donor Upgrades</div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>Expected Revenue Impact:</strong> <span style="color: var(--success); font-weight: 700;">$453,000/year (CTAs + upgrades + fees)</span></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Phase 4: Growth Initiatives</h2>
+            <p class="phase-badge" style="display: inline-block; background: var(--success); color: white;">Month 3-5</p>
+            
+            <div class="phase-card growth">
+                <h3>Expand Reach & Acquire New Donors</h3>
+                <p>With infrastructure fixed and conversion optimized, now invest in growth.</p>
+                
+                <div class="milestone">
+                    <h4>Month 3: Google Ad Grant</h4>
+                    <ul>
+                        <li>Submit Google Ad Grant application</li>
+                        <li>Set up compliant account structure</li>
+                        <li>Create campaigns for mission keywords</li>
+                        <li>Launch with $10K/month free budget</li>
+                    </ul>
+                </div>
+                
+                <div class="milestone">
+                    <h4>Month 3-4: SEO Content</h4>
+                    <ul>
+                        <li>Create 10-15 intent-mapped pages</li>
+                        <li>Target: "veteran charity," "humanitarian evacuation," regional terms</li>
+                        <li>Build internal linking structure (content hubs)</li>
+                        <li>Begin link outreach to veteran/military publications</li>
+                    </ul>
+                </div>
+                
+                <div class="milestone">
+                    <h4>Month 4-5: Video Strategy</h4>
+                    <ul>
+                        <li>Launch YouTube Shorts (3-5/week from existing footage)</li>
+                        <li>Create TikTok account and cross-post</li>
+                        <li>Repurpose for Instagram Reels</li>
+                        <li>One-time → recurring conversion campaign</li>
+                    </ul>
+                </div>
+
+                <h4>Success Criteria</h4>
+                <div class="kpi-grid">
+                    <div class="kpi-item">
+                        <div class="value">$10K/mo</div>
+                        <div class="label">Google Ad Grant Active</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="value">35-50</div>
+                        <div class="label">Keywords Ranking</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="value">50%+</div>
+                        <div class="label">Non-Branded Traffic</div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem;"><strong>Expected Revenue Impact:</strong> <span style="color: var(--success); font-weight: 700;">$169,000/year (Ad Grant + conversions) + long-term SEO growth</span></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Phase 5: Scale & Optimize</h2>
+            <p class="phase-badge" style="display: inline-block; background: #1976d2; color: white;">Month 5-6</p>
+            
+            <div class="phase-card scale">
+                <h3>Refine, Scale, and Prepare for Year 2</h3>
+                <p>Analyze what's working, double down on winners, plan next phase.</p>
+                
+                <div class="milestone">
+                    <h4>Month 5-6: Optimization</h4>
+                    <ul>
+                        <li>Analyze Google Ad Grant performance—scale winning campaigns</li>
+                        <li>Review SEO content performance—create more of what ranks</li>
+                        <li>Optimize video content based on engagement data</li>
+                        <li>Refine donor upgrade messaging based on results</li>
+                    </ul>
+                </div>
+                
+                <div class="milestone">
+                    <h4>Month 6: Strategic Planning</h4>
+                    <ul>
+                        <li>6-month performance review</li>
+                        <li>Identify opportunities for Year 2 (major donor program, international expansion, etc.)</li>
+                        <li>Budget planning for continued growth investment</li>
+                        <li>Quarterly roadmap adjustment</li>
+                    </ul>
+                </div>
+
+                <h4>6-Month Success Criteria</h4>
+                <div class="kpi-grid">
+                    <div class="kpi-item">
+                        <div class="value">25-30%</div>
+                        <div class="label">Form Conversion</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="value">150+</div>
+                        <div class="label">New Monthly Donors</div>
+                    </div>
+                    <div class="kpi-item">
+                        <div class="value">$400K+</div>
+                        <div class="label">Recovered/New Revenue</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>6-Month Financial Summary</h2>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>Timeline</th>
+                        <th>Investment Required</th>
+                        <th>Revenue Impact (Annual)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Phase 1: Emergency Fix</td>
+                        <td>Weeks 1-2</td>
+                        <td>Dev time + tools (~$2-5K)</td>
+                        <td style="color: var(--success);">$118,800</td>
+                    </tr>
+                    <tr>
+                        <td>Phase 2: Quick Wins</td>
+                        <td>Weeks 2-4</td>
+                        <td>Card updater service (~$500/mo)</td>
+                        <td style="color: var(--success);">$100,000</td>
+                    </tr>
+                    <tr>
+                        <td>Phase 3: Conversion</td>
+                        <td>Month 2-3</td>
+                        <td>Email platform + dev time</td>
+                        <td style="color: var(--success);">$453,000</td>
+                    </tr>
+                    <tr>
+                        <td>Phase 4: Growth</td>
+                        <td>Month 3-5</td>
+                        <td>Content + video editing</td>
+                        <td style="color: var(--success);">$169,000</td>
+                    </tr>
+                    <tr>
+                        <td>Phase 5: Scale</td>
+                        <td>Month 5-6</td>
+                        <td>Ongoing optimization</td>
+                        <td>Compounding</td>
+                    </tr>
+                    <tr class="highlight">
+                        <td><strong>Total Year 1</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td style="color: var(--success);"><strong>$840,800+</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>Risk Mitigation</h2>
+            
+            <div class="findings-grid">
+                <div class="finding-card warning">
+                    <span class="tag">Risk</span>
+                    <h4>Form Fix Takes Longer Than Expected</h4>
+                    <p><strong>Mitigation:</strong> If root cause isn't found in Week 1, consider rebuilding form on dedicated page rather than debugging modal. Speed matters more than elegance.</p>
+                </div>
+                <div class="finding-card warning">
+                    <span class="tag">Risk</span>
+                    <h4>Google Ad Grant Denied or Restricted</h4>
+                    <p><strong>Mitigation:</strong> Ensure compliance before applying. Have backup plan for modest paid search budget ($1-2K/month) if needed.</p>
+                </div>
+                <div class="finding-card warning">
+                    <span class="tag">Risk</span>
+                    <h4>Content Doesn't Rank</h4>
+                    <p><strong>Mitigation:</strong> SEO is long-term. Pair with Google Ad Grant for immediate traffic while organic builds. Focus on low-competition long-tail keywords first.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p style="font-size: 1.5rem; color: var(--navy); margin-bottom: 0.5rem;"><strong>6-Month Target</strong></p>
+            <div class="stat-giant success" style="font-size: 3.5rem;">$840K+</div>
+            <p style="color: var(--gray-600); margin-top: 0.5rem;">in recovered and additional annual revenue</p>
+            <p style="color: var(--gray-600); margin-top: 1rem;">This roadmap will be reviewed and adjusted quarterly based on performance data, donor behavior shifts, and organizational priorities.</p>
+        </div>
+
+        <div class="section">
+            <h2>Next Steps</h2>
+            <div class="card">
+                <h3>Immediate Actions (This Week)</h3>
+                <ol>
+                    <li><strong>Schedule kickoff meeting</strong> to align on priorities and assign owners</li>
+                    <li><strong>Begin form diagnostic</strong> — test on all browsers/devices, check payment logs</li>
+                    <li><strong>Fix broken TikTok link</strong> — 1 hour fix, immediate trust improvement</li>
+                    <li><strong>Install session recording</strong> — Hotjar free tier is sufficient to start</li>
+                    <li><strong>Review this report with leadership</strong> — ensure alignment on approach</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-nav">
+        <a href="recommendations.html" class="prev">← Back to Recommendations</a>
+        <a href="index.html" class="next">Back to Summary →</a>
+    </div>
+
+    <footer>
+        <div class="brand">★ PREPARED FOR STRONGHOLD RESCUE & RELIEF ★</div>
+        <p>Discovery Report — XSL Consulting, LLC — February 2026</p>
+    </footer>
+</body>
+</html>
