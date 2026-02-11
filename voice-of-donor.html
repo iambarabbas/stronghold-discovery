@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice of Donor — Stronghold Discovery Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .quote-card {
+            background: var(--white);
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem 2rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--gray-600);
+        }
+        .quote-card .attribution {
+            font-style: normal;
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            margin-top: 0.75rem;
+            opacity: 0.7;
+        }
+        .nps-display {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, #e8f5e9, #fff);
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+        .nps-score {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--success);
+            line-height: 1;
+        }
+        .nps-label {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            margin-top: 0.5rem;
+        }
+        .nps-breakdown {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 1.5rem;
+        }
+        .nps-segment {
+            text-align: center;
+        }
+        .nps-segment .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .nps-segment .label {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+        }
+        .bar-chart {
+            margin: 1.5rem 0;
+        }
+        .bar-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .bar-label {
+            width: 200px;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+        .bar-container {
+            flex: 1;
+            background: var(--gray-200);
+            height: 24px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: var(--navy);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .bar-fill.gold { background: var(--gold); color: var(--navy); }
+        .bar-fill.success { background: var(--success); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-brand">★ STRONGHOLD DISCOVERY</a>
+        <div class="nav-links">
+            <a href="index.html">Summary</a>
+            <a href="conversion.html">Conversion</a>
+            <a href="donors.html">Donors</a>
+            <a href="voice-of-donor.html" class="active">Voice of Donor</a>
+            <a href="seo.html">SEO</a>
+            <a href="digital.html">Digital</a>
+            <a href="competitive.html">Competitive</a>
+            <a href="swot.html">SWOT</a>
+            <a href="recommendations.html">Recs</a>
+            <a href="roadmap.html">Roadmap</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="section-number">★</div>
+        <h1>Voice of Donor</h1>
+        <p>Direct insights from 337 Stronghold supporters—what motivates them, what they trust, and what they want.</p>
+    </header>
+
+    <div class="container">
+        <div class="alert alert-success">
+            <h3>✓ Survey Overview</h3>
+            <p><strong>337 responses</strong> from active Stronghold donors. This is statistically significant data that reveals who your supporters are, why they give, and how to reach more people like them.</p>
+        </div>
+
+        <div class="section">
+            <h2>Net Promoter Score</h2>
+            <p>"On a scale of 1–10, how likely are you to recommend Stronghold to a friend or family member?"</p>
+            
+            <div class="nps-display">
+                <div class="nps-score">85</div>
+                <div class="nps-label">Net Promoter Score</div>
+                <div class="nps-breakdown">
+                    <div class="nps-segment">
+                        <div class="value" style="color: var(--success);">88.7%</div>
+                        <div class="label">Promoters (9-10)</div>
+                    </div>
+                    <div class="nps-segment">
+                        <div class="value" style="color: var(--warning);">8.0%</div>
+                        <div class="label">Passives (7-8)</div>
+                    </div>
+                    <div class="nps-segment">
+                        <div class="value" style="color: var(--danger);">3.3%</div>
+                        <div class="label">Detractors (1-6)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>What This Means</h3>
+                <p><strong>An NPS of 85 is world-class.</strong> For context:</p>
+                <ul>
+                    <li>Average nonprofit NPS: 40-50</li>
+                    <li>Good nonprofit NPS: 50-70</li>
+                    <li>Excellent nonprofit NPS: 70+</li>
+                    <li><strong>Stronghold: 85</strong> — exceptional loyalty</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>81% of respondents gave a perfect 10.</strong> Your donors don't just support you—they're passionate advocates who will actively refer others.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>How Donors Discovered Stronghold</h2>
+            
+            <div class="bar-chart">
+                <div class="bar-row">
+                    <div class="bar-label">Podcast / Interview</div>
+                    <div class="bar-container">
+                        <div class="bar-fill gold" style="width: 46.3%;">46.3%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Social Media</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 39.5%;">39.5%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">News Article</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 6.8%;">6.8%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Friend/Family</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 5.0%;">5.0%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Email</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 1.5%;">1.5%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info" style="margin-top: 1.5rem;">
+                <h3>💡 Key Insight: MrBallen is a Major Acquisition Channel</h3>
+                <p><strong>46.3% of donors came through podcasts</strong>, with multiple survey respondents explicitly mentioning <strong>MrBallen</strong>. Sample responses:</p>
+                <ul style="margin-top: 0.5rem; font-size: 0.9rem;">
+                    <li>"MrBallen talked about your organization during one of his videos...so I decided to support the cause."</li>
+                    <li>"Mr. Balin was the one we heard years ago, he recommended you all, we researched it, and joined."</li>
+                    <li>"I only heard about this through MrBallen on YouTube."</li>
+                </ul>
+                <p style="margin-top: 0.5rem;"><strong>Implication:</strong> Podcast appearances are the #1 acquisition channel. Pursue more podcast opportunities.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What Motivates Donors to Give</h2>
+            
+            <div class="bar-chart">
+                <div class="bar-row">
+                    <div class="bar-label">Specific rescue story</div>
+                    <div class="bar-container">
+                        <div class="bar-fill success" style="width: 48.7%;">48.7%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Faith-based values</div>
+                    <div class="bar-container">
+                        <div class="bar-fill success" style="width: 47.2%;">47.2%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Leadership credibility</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 42.7%;">42.7%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Transparency/accountability</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 37.1%;">37.1%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Personal recommendation</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 8.9%;">8.9%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="findings-grid" style="margin-top: 2rem;">
+                <div class="finding-card success">
+                    <span class="tag">Top Motivator</span>
+                    <h4>Rescue Stories Convert</h4>
+                    <p>48.7% cite a specific rescue story as motivation. <strong>Stories → Emotion → Action.</strong> Continue leading with compelling narratives.</p>
+                </div>
+                <div class="finding-card success">
+                    <span class="tag">Donor Profile</span>
+                    <h4>Faith-Driven Supporters</h4>
+                    <p>47.2% are motivated by faith-based values. Many cite Isaiah 6:8, prayers, and God's work. This audience responds to faith-aligned messaging.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What Builds Donor Trust</h2>
+            
+            <div class="bar-chart">
+                <div class="bar-row">
+                    <div class="bar-label">Clear mission & values</div>
+                    <div class="bar-container">
+                        <div class="bar-fill success" style="width: 66.8%;">66.8%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">On-the-ground presence</div>
+                    <div class="bar-container">
+                        <div class="bar-fill success" style="width: 60.8%;">60.8%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Leadership credibility</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 57.0%;">57.0%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Transparency about donations</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 54.9%;">54.9%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Consistent communication</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 32.6%;">32.6%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Personal recommendation</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 17.2%;">17.2%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem;">
+                <h3>Trust Factor Analysis</h3>
+                <p>The top trust drivers are exactly what Stronghold excels at:</p>
+                <ul>
+                    <li><strong>Clear mission (66.8%):</strong> "Charity With Dignity" resonates—keep emphasizing this differentiator</li>
+                    <li><strong>On-the-ground presence (60.8%):</strong> Field footage and real operations build trust that "talking heads" charities can't match</li>
+                    <li><strong>Leadership credibility (57%):</strong> SOF veteran background is a major trust signal</li>
+                    <li><strong>Transparency (54.9%):</strong> Continue showing exactly where money goes</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Content That Resonates</h2>
+            <p>What types of content do donors engage with most?</p>
+            
+            <div class="bar-chart">
+                <div class="bar-row">
+                    <div class="bar-label">Field updates & stories</div>
+                    <div class="bar-container">
+                        <div class="bar-fill gold" style="width: 84.9%;">84.9%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Impact reports</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 53.4%;">53.4%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Videos from the field</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 50.7%;">50.7%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Educational content</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 43.6%;">43.6%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Newsletter</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 40.7%;">40.7%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Founder messages</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 37.4%;">37.4%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success" style="margin-top: 1.5rem;">
+                <h3>✓ Content Strategy Validated</h3>
+                <p><strong>84.9% want field updates and rescue stories.</strong> This confirms: stories from the field are your most engaging content. Double down on YouTube, short-form video, and narrative-driven communications.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Donation Experience</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="value success">80.1%</div>
+                    <div class="label">Very Easy</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value success">17.2%</div>
+                    <div class="label">Easy</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value">1.8%</div>
+                    <div class="label">Neutral</div>
+                </div>
+                <div class="stat-card">
+                    <div class="value warning">0.9%</div>
+                    <div class="label">Difficult</div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem;">
+                <h3>Issues Reported</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>% of Respondents</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>None — everything worked well</td>
+                            <td style="color: var(--success);">92.6%</td>
+                        </tr>
+                        <tr>
+                            <td>Technical issues</td>
+                            <td>2.1%</td>
+                        </tr>
+                        <tr>
+                            <td>Other issues</td>
+                            <td>3.9%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert alert-warning" style="margin-top: 1.5rem;">
+                <h3>⚠️ Important Context: Survivor Bias</h3>
+                <p>This survey only reached <strong>people who successfully donated</strong>. The 97.3% positive experience rate doesn't contradict the 98.6% form abandonment rate—it explains why: <strong>the people who got through had a good experience; the people who didn't get through couldn't answer this survey.</strong></p>
+                <p style="margin-top: 0.5rem;">This reinforces the urgency of fixing the donation form—the experience is good once it works.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What Donors Want More Of</h2>
+            
+            <div class="bar-chart">
+                <div class="bar-row">
+                    <div class="bar-label">Volunteer/advocacy opportunities</div>
+                    <div class="bar-container">
+                        <div class="bar-fill gold" style="width: 45%;">~45%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">More stories from the field</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 40%;">~40%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Behind-the-scenes content</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 35%;">~35%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">More frequent updates</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 20%;">~20%</div>
+                    </div>
+                </div>
+                <div class="bar-row">
+                    <div class="bar-label">Clearer impact reporting</div>
+                    <div class="bar-container">
+                        <div class="bar-fill" style="width: 15%;">~15%</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info" style="margin-top: 1.5rem;">
+                <h3>💡 Key Insight: Donors Want to Do More Than Give Money</h3>
+                <p>The #1 request is <strong>volunteer and advocacy opportunities</strong>. This theme appears repeatedly in open-ended responses:</p>
+            </div>
+
+            <div class="quote-card">
+                "I would love to donate my time in any capacity that would benefit!"
+            </div>
+            <div class="quote-card">
+                "I'm very happy with the work being done, I wish there were more active ways to support either financially or not."
+            </div>
+            <div class="quote-card">
+                "Would love to be able to support with more than just money."
+            </div>
+            <div class="quote-card">
+                "Opportunities to volunteer in different ways would be more gratifying than just donating."
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem;">
+                <h3>Opportunity: Ambassador/Advocacy Program</h3>
+                <p>Your donors <em>want</em> to advocate. Consider creating:</p>
+                <ul>
+                    <li><strong>Social media sharing toolkit</strong> — graphics, captions, stories they can share</li>
+                    <li><strong>Referral program</strong> — track when donors bring in new supporters</li>
+                    <li><strong>Prayer team</strong> — organized prayer updates for faith-driven supporters</li>
+                    <li><strong>Corporate matching</strong> — help donors get employer matches</li>
+                    <li><strong>Fundraising pages</strong> — let supporters create their own campaigns</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Donor Demographics & Profile</h2>
+            
+            <div class="findings-grid">
+                <div class="finding-card info">
+                    <span class="tag">Profile</span>
+                    <h4>Military/Veteran Connection</h4>
+                    <p>Many donors are veterans themselves. Survey responses mention: "8 years AD Corpsman," "Retired Navy," "Army combat veteran," "30 yrs army intelligence," "Former Air Force officer."</p>
+                </div>
+                <div class="finding-card info">
+                    <span class="tag">Profile</span>
+                    <h4>Faith-Driven</h4>
+                    <p>47.2% cite faith as motivation. Responses include prayers, Bible verses (Isaiah 6:8), and references to God's work. Faith-based messaging resonates strongly.</p>
+                </div>
+                <div class="finding-card info">
+                    <span class="tag">Profile</span>
+                    <h4>Passionate Advocates</h4>
+                    <p>"I wore your shirt until it fell apart just to spread your [mission]." "Covering your 6 while you continue to give people hope." Deep emotional connection.</p>
+                </div>
+                <div class="finding-card info">
+                    <span class="tag">Profile</span>
+                    <h4>Impact-Focused</h4>
+                    <p>"Keep saving lives. Every single life matters." Donors want to know their money makes a tangible difference. Impact reporting matters.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Selected Donor Quotes</h2>
+            
+            <div class="quote-card">
+                "Your organization is doing amazing work."
+            </div>
+            <div class="quote-card">
+                "Y'all are doing something so desperately needed in this world. God bless you all."
+            </div>
+            <div class="quote-card">
+                "My continued support for this operation is one of proudest and most important."
+            </div>
+            <div class="quote-card">
+                "Your work inspires me to develop my skills and one day be ready and able to bring hope where it's most needed. Isaiah 6:8."
+            </div>
+            <div class="quote-card">
+                "I think if you could find a way to better advertise what you guys do it would help a lot."
+            </div>
+            <div class="quote-card">
+                "Put out YouTube channel. You'll crush your objectives. It's inexpensive and not that difficult to establish."
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Strategic Implications</h2>
+            
+            <div class="card">
+                <h3>What This Data Tells Us</h3>
+                <ol>
+                    <li><strong>Double down on podcasts:</strong> 46.3% acquisition from this channel. MrBallen specifically is driving donors. Pursue more podcast appearances.</li>
+                    <li><strong>Stories convert:</strong> 84.9% want field stories, 48.7% were motivated by a specific rescue story. Lead with narrative content.</li>
+                    <li><strong>Faith matters:</strong> 47.2% are faith-motivated. Continue faith-aligned messaging for this core audience.</li>
+                    <li><strong>Trust is earned:</strong> On-ground presence (60.8%) and leadership credibility (57%) drive trust. Keep showing real operations.</li>
+                    <li><strong>Create engagement pathways:</strong> Donors want to do more than give. Build volunteer/advocacy programs.</li>
+                    <li><strong>Your base is loyal:</strong> NPS of 85 is exceptional. These supporters will refer others—make it easy for them.</li>
+                    <li><strong>The form issue is real:</strong> 97.3% of successful donors had a good experience, but the 98.6% who couldn't complete never made it this far.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p style="font-size: 1.1rem; color: var(--navy); margin-bottom: 0.5rem;"><strong>Voice of Donor Summary</strong></p>
+            <p style="color: var(--gray-600);">Your donors are passionate advocates (NPS 85), primarily discovered you through podcasts (46%), are motivated by rescue stories and faith (48%/47%), and trust you because of your on-ground presence and leadership credibility. They want more stories, more ways to help, and more volunteer opportunities. Give them what they're asking for.</p>
+        </div>
+    </div>
+
+    <div class="page-nav">
+        <a href="donors.html" class="prev">← Back to Donor Analysis</a>
+        <a href="seo.html" class="next">Next: SEO Analysis →</a>
+    </div>
+
+    <footer>
+        <div class="brand">★ PREPARED FOR STRONGHOLD RESCUE & RELIEF ★</div>
+        <p>Discovery Report — XSL Consulting, LLC — February 2026</p>
+    </footer>
+</body>
+</html>
