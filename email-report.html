@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Marketing Report — Stronghold Discovery</title>
+    <style>
+        :root {
+            --gold: #C9A227;
+            --gold-light: #E8D48A;
+            --navy: #1a2744;
+            --navy-light: #2d3a52;
+            --white: #ffffff;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-600: #6c757d;
+            --green: #28a745;
+            --red: #dc3545;
+            --yellow: #ffc107;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .nav {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-brand {
+            color: var(--gold);
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 2rem;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover { opacity: 1; }
+
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: var(--navy-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .metric-card .value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .metric-card .label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+
+        .metric-card .benchmark {
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .benchmark.good { background: rgba(40, 167, 69, 0.2); color: var(--green); }
+        .benchmark.warning { background: rgba(255, 193, 7, 0.2); color: var(--yellow); }
+        .benchmark.bad { background: rgba(220, 53, 69, 0.2); color: var(--red); }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .data-table th {
+            background: var(--navy-light);
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .data-table tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(201, 162, 39, 0.05) 100%);
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight-box h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .chart-container {
+            background: var(--navy-light);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            height: 200px;
+            gap: 1rem;
+            padding: 1rem 0;
+        }
+
+        .bar-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bar {
+            width: 100%;
+            max-width: 60px;
+            background: var(--gold);
+            border-radius: 4px 4px 0 0;
+            transition: height 0.3s;
+        }
+
+        .bar-label {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        .bar-value {
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .comparison-card {
+            background: var(--navy-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .comparison-card h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .trend-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        .trend-up { color: var(--green); }
+        .trend-down { color: var(--red); }
+        .trend-flat { color: var(--yellow); }
+
+        .recommendation-list {
+            list-style: none;
+        }
+
+        .recommendation-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--navy-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .recommendation-list li strong {
+            color: var(--gold);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(0,0,0,0.2);
+            margin-top: 3rem;
+        }
+
+        .footer .brand {
+            color: var(--gold);
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav-brand">★ STRONGHOLD DISCOVERY</a>
+        <div class="nav-links">
+            <a href="index.html">Overview</a>
+            <a href="donors.html">Donors</a>
+            <a href="email-report.html">Email</a>
+            <a href="seo.html">SEO</a>
+            <a href="recommendations.html">Recommendations</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Email Marketing Report</h1>
+        <p>Analysis of 13 email campaigns from February 2025 – February 2026</p>
+    </section>
+
+    <div class="container">
+        <!-- Executive Summary -->
+        <section class="section">
+            <h2 class="section-title">Executive Summary</h2>
+            
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="value">~10,200</div>
+                    <div class="label">Email List Size</div>
+                    <div class="benchmark warning">Slight growth YoY</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">99%</div>
+                    <div class="label">Delivery Rate</div>
+                    <div class="benchmark good">✓ Excellent</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">39%</div>
+                    <div class="label">Avg. Open Rate</div>
+                    <div class="benchmark good">+11pts vs industry</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">2.7%</div>
+                    <div class="label">Avg. Click Rate</div>
+                    <div class="benchmark warning">At industry avg</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">0.6%</div>
+                    <div class="label">Avg. Unsubscribe</div>
+                    <div class="benchmark bad">2x industry avg</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">6.9%</div>
+                    <div class="label">Click-to-Open Rate</div>
+                    <div class="benchmark warning">Below 10% target</div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <h4>Key Finding</h4>
+                <p>Stronghold has a <strong>highly engaged email audience</strong> with open rates 40% above industry average. However, the high unsubscribe rate (2x industry) and below-average click-to-open rate suggest content may not be meeting subscriber expectations after they open. This represents a significant optimization opportunity.</p>
+            </div>
+        </section>
+
+        <!-- Industry Benchmarks Comparison -->
+        <section class="section">
+            <h2 class="section-title">Stronghold vs. Nonprofit Industry Benchmarks</h2>
+            
+            <div class="chart-container">
+                <div class="comparison-grid">
+                    <div class="comparison-card">
+                        <h4>Open Rate</h4>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--green);">39%</div>
+                                <div style="opacity: 0.7;">Stronghold</div>
+                            </div>
+                            <div style="font-size: 2rem; opacity: 0.3;">vs</div>
+                            <div>
+                                <div style="font-size: 2rem; font-weight: bold; opacity: 0.5;">28%</div>
+                                <div style="opacity: 0.7;">Industry Avg</div>
+                            </div>
+                        </div>
+                        <div class="trend-indicator trend-up" style="margin-top: 1rem;">
+                            ↑ 39% better than average
+                        </div>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Click Rate</h4>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--yellow);">2.7%</div>
+                                <div style="opacity: 0.7;">Stronghold</div>
+                            </div>
+                            <div style="font-size: 2rem; opacity: 0.3;">vs</div>
+                            <div>
+                                <div style="font-size: 2rem; font-weight: bold; opacity: 0.5;">2.7%</div>
+                                <div style="opacity: 0.7;">Industry Avg</div>
+                            </div>
+                        </div>
+                        <div class="trend-indicator trend-flat" style="margin-top: 1rem;">
+                            → At industry average
+                        </div>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Unsubscribe Rate</h4>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--red);">0.6%</div>
+                                <div style="opacity: 0.7;">Stronghold</div>
+                            </div>
+                            <div style="font-size: 2rem; opacity: 0.3;">vs</div>
+                            <div>
+                                <div style="font-size: 2rem; font-weight: bold; opacity: 0.5;">0.2%</div>
+                                <div style="opacity: 0.7;">Industry Avg</div>
+                            </div>
+                        </div>
+                        <div class="trend-indicator trend-down" style="margin-top: 1rem;">
+                            ↓ 3x higher than average
+                        </div>
+                    </div>
+                    <div class="comparison-card">
+                        <h4>Click-to-Open Rate</h4>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-size: 2rem; font-weight: bold; color: var(--yellow);">6.9%</div>
+                                <div style="opacity: 0.7;">Stronghold</div>
+                            </div>
+                            <div style="font-size: 2rem; opacity: 0.3;">vs</div>
+                            <div>
+                                <div style="font-size: 2rem; font-weight: bold; opacity: 0.5;">10%</div>
+                                <div style="opacity: 0.7;">Industry Avg</div>
+                            </div>
+                        </div>
+                        <div class="trend-indicator trend-down" style="margin-top: 1rem;">
+                            ↓ 31% below average
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <h4>The Open-Click Gap</h4>
+                <p>People are opening emails at exceptional rates but not clicking through. This suggests <strong>subject lines are compelling but email content isn't delivering</strong> on the promise. Either the content is too long, CTAs aren't clear, or the value proposition isn't strong enough once they're reading.</p>
+            </div>
+        </section>
+
+        <!-- Campaign Performance Table -->
+        <section class="section">
+            <h2 class="section-title">Campaign Performance (Last 12 Months)</h2>
+            
+            <div style="overflow-x: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Campaign</th>
+                            <th>Date</th>
+                            <th>Sent</th>
+                            <th>Open %</th>
+                            <th>Click %</th>
+                            <th>Unsubs</th>
+                            <th>CTOR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Thank You for a Year of Impact</td>
+                            <td>Jan 13, 2026</td>
+                            <td>10,300</td>
+                            <td style="color: var(--green);">46%</td>
+                            <td>1%</td>
+                            <td>54</td>
+                            <td>3.2%</td>
+                        </tr>
+                        <tr>
+                            <td>January in the Field</td>
+                            <td>Feb 5, 2026</td>
+                            <td>10,319</td>
+                            <td>35%</td>
+                            <td>2%</td>
+                            <td>27</td>
+                            <td>5.7%</td>
+                        </tr>
+                        <tr>
+                            <td>Field Story: Operator's Journey</td>
+                            <td>Dec 15, 2025</td>
+                            <td>10,289</td>
+                            <td>35%</td>
+                            <td>2%</td>
+                            <td>50</td>
+                            <td>5.0%</td>
+                        </tr>
+                        <tr>
+                            <td>Burma Field Report – October</td>
+                            <td>Nov 7, 2025</td>
+                            <td>10,268</td>
+                            <td>33%</td>
+                            <td>3%</td>
+                            <td>54</td>
+                            <td>7.8%</td>
+                        </tr>
+                        <tr>
+                            <td>Medics Treat Burma Army POWs</td>
+                            <td>Oct 7, 2025</td>
+                            <td>10,144</td>
+                            <td>37%</td>
+                            <td>2%</td>
+                            <td>67</td>
+                            <td>6.5%</td>
+                        </tr>
+                        <tr>
+                            <td>August Newsletter + By the Numbers</td>
+                            <td>Sep 5, 2025</td>
+                            <td>10,078</td>
+                            <td style="color: var(--green);">42%</td>
+                            <td style="color: var(--green);">4%</td>
+                            <td>71</td>
+                            <td style="color: var(--green);">8.3%</td>
+                        </tr>
+                        <tr>
+                            <td>Ambulance Report: July 2025</td>
+                            <td>Aug 13, 2025</td>
+                            <td>10,075</td>
+                            <td style="color: var(--green);">43%</td>
+                            <td>3%</td>
+                            <td style="color: var(--red);">89</td>
+                            <td>6.6%</td>
+                        </tr>
+                        <tr>
+                            <td>Video: Clearing The Way</td>
+                            <td>Aug 8, 2025</td>
+                            <td>10,097</td>
+                            <td>39%</td>
+                            <td>3%</td>
+                            <td>75</td>
+                            <td style="color: var(--green);">8.7%</td>
+                        </tr>
+                        <tr>
+                            <td>1000th Ambulance Run in Burma</td>
+                            <td>Jul 21, 2025</td>
+                            <td>10,118</td>
+                            <td>39%</td>
+                            <td>2%</td>
+                            <td>81</td>
+                            <td>5.3%</td>
+                        </tr>
+                        <tr>
+                            <td>New Video: Supply Run</td>
+                            <td>Jun 3, 2025</td>
+                            <td>10,079</td>
+                            <td>39%</td>
+                            <td style="color: var(--green);">4%</td>
+                            <td>47</td>
+                            <td style="color: var(--green);">9.2%</td>
+                        </tr>
+                        <tr>
+                            <td>Emergency Aid to Burma Clinic</td>
+                            <td>May 2, 2025</td>
+                            <td>10,085</td>
+                            <td>40%</td>
+                            <td>3%</td>
+                            <td>52</td>
+                            <td>8.6%</td>
+                        </tr>
+                        <tr>
+                            <td>Honoring Our Elders</td>
+                            <td>Mar 28, 2025</td>
+                            <td>10,051</td>
+                            <td>40%</td>
+                            <td>3%</td>
+                            <td>51</td>
+                            <td>6.3%</td>
+                        </tr>
+                        <tr>
+                            <td>A Lifeline for Expecting Mothers</td>
+                            <td>Feb 28, 2025</td>
+                            <td>10,040</td>
+                            <td>40%</td>
+                            <td>2%</td>
+                            <td>55</td>
+                            <td>4.7%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p style="margin-top: 1rem; opacity: 0.7; font-size: 0.9rem;">
+                CTOR = Click-to-Open Rate (Clicks ÷ Opens) — measures content effectiveness after open
+            </p>
+        </section>
+
+        <!-- Top Performing Content -->
+        <section class="section">
+            <h2 class="section-title">Content Performance Insights</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <h4>🏆 Top Performing Campaigns</h4>
+                    <ul style="list-style: none; margin-top: 1rem;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <strong style="color: var(--gold);">46% open</strong> — Thank You for a Year of Impact
+                            <br><small style="opacity: 0.7;">Year-end gratitude resonates strongly</small>
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <strong style="color: var(--gold);">43% open</strong> — Ambulance Report: July 2025
+                            <br><small style="opacity: 0.7;">Data-driven "By the Numbers" format</small>
+                        </li>
+                        <li style="padding: 0.75rem 0;">
+                            <strong style="color: var(--gold);">9.2% CTOR</strong> — New Video: Supply Run
+                            <br><small style="opacity: 0.7;">Video content drives highest engagement</small>
+                        </li>
+                    </ul>
+                </div>
+                <div class="comparison-card">
+                    <h4>📉 Lower Performing Campaigns</h4>
+                    <ul style="list-style: none; margin-top: 1rem;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <strong style="color: var(--red);">33% open</strong> — Burma Field Report – October
+                            <br><small style="opacity: 0.7;">Generic subject line underperformed</small>
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            <strong style="color: var(--red);">3.2% CTOR</strong> — Thank You for a Year of Impact
+                            <br><small style="opacity: 0.7;">High opens but low action — no clear CTA</small>
+                        </li>
+                        <li style="padding: 0.75rem 0;">
+                            <strong style="color: var(--red);">89 unsubs</strong> — Ambulance Report: July
+                            <br><small style="opacity: 0.7;">Content or frequency fatigue</small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <h4>What Drives Engagement</h4>
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li><strong>Video content</strong> consistently achieves highest click-to-open rates (8-9%)</li>
+                    <li><strong>"By the Numbers"</strong> monthly reports perform above average</li>
+                    <li><strong>Gratitude/impact themes</strong> drive highest open rates</li>
+                    <li><strong>Human stories</strong> (operators, patients) create emotional connection</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Link Click Analysis -->
+        <section class="section">
+            <h2 class="section-title">Click Destination Analysis</h2>
+            
+            <div class="chart-container">
+                <h4 style="color: var(--gold); margin-bottom: 1rem;">Most Clicked Link Types</h4>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Content Type</th>
+                            <th>Example</th>
+                            <th>Avg Clicks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🎬 Video Content</td>
+                            <td>youtube.com, "Watch Video" CTAs</td>
+                            <td style="color: var(--green);">150-325</td>
+                        </tr>
+                        <tr>
+                            <td>📊 By the Numbers Reports</td>
+                            <td>/updates/by-the-numbers-[month]</td>
+                            <td style="color: var(--green);">96-206</td>
+                        </tr>
+                        <tr>
+                            <td>📖 Field Stories</td>
+                            <td>/updates/[story-slug]</td>
+                            <td>93-227</td>
+                        </tr>
+                        <tr>
+                            <td>🏠 Homepage</td>
+                            <td>strongholdrescue.org/</td>
+                            <td>23-67</td>
+                        </tr>
+                        <tr>
+                            <td>📱 Social Media</td>
+                            <td>Instagram, Facebook, X, YouTube</td>
+                            <td style="color: var(--red);">1-29</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="insight-box">
+                <h4>Key Observation</h4>
+                <p>Social media links in emails get minimal clicks (1-29 per email). Subscribers engage with <strong>mission content</strong>, not social channels. Consider removing social links from emails or using them only in footers to avoid diluting primary CTAs.</p>
+            </div>
+        </section>
+
+        <!-- List Health -->
+        <section class="section">
+            <h2 class="section-title">List Health & Growth</h2>
+            
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="value">~780</div>
+                    <div class="label">Annual Unsubscribes</div>
+                    <div class="benchmark bad">~60/month avg</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">2%</div>
+                    <div class="label">Net List Growth</div>
+                    <div class="benchmark warning">10,040 → 10,319</div>
+                </div>
+                <div class="metric-card">
+                    <div class="value">99%</div>
+                    <div class="label">Deliverability</div>
+                    <div class="benchmark good">Excellent sender reputation</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h4 style="color: var(--gold); margin-bottom: 1rem;">Unsubscribe Trend by Campaign</h4>
+                <div class="bar-chart">
+                    <div class="bar-item">
+                        <div class="bar-value">55</div>
+                        <div class="bar" style="height: 62%;"></div>
+                        <div class="bar-label">Feb</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-value">51</div>
+                        <div class="bar" style="height: 57%;"></div>
+                        <div class="bar-label">Mar</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-value">52</div>
+                        <div class="bar" style="height: 58%;"></div>
+                        <div class="bar-label">May</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-value">47</div>
+                        <div class="bar" style="height: 53%;"></div>
+                        <div class="bar-label">Jun</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-value">81</div>
+                        <div class="bar" style="height: 91%;"></div>
+                        <div class="bar-label">Jul</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-value">75</div>
+                        <div class="bar" style="height: 84%;"></div>
+                        <div class="bar-label">Aug (V)</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-value" style="color: var(--red);">89</div>
+                        <div class="bar" style="height: 100%; background: var(--red);"></div>
+                        <div class="bar-label">Aug (R)</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-value">71</div>
+                        <div class="bar" style="height: 80%;"></div>
+                        <div class="bar-label">Sep</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-value">67</div>
+                        <div class="bar" style="height: 75%;"></div>
+                        <div class="bar-label">Oct</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-value">54</div>
+                        <div class="bar" style="height: 61%;"></div>
+                        <div class="bar-label">Nov</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-value">50</div>
+                        <div class="bar" style="height: 56%;"></div>
+                        <div class="bar-label">Dec</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-value">54</div>
+                        <div class="bar" style="height: 61%;"></div>
+                        <div class="bar-label">Jan</div>
+                    </div>
+                    <div class="bar-item">
+                        <div class="bar-value" style="color: var(--green);">27</div>
+                        <div class="bar" style="height: 30%; background: var(--green);"></div>
+                        <div class="bar-label">Feb</div>
+                    </div>
+                </div>
+                <p style="opacity: 0.7; font-size: 0.85rem; margin-top: 1rem;">Note: Two emails sent in August. Spike to 89 unsubs on Ambulance Report suggests content or frequency fatigue.</p>
+            </div>
+        </section>
+
+        <!-- Recommendations -->
+        <section class="section">
+            <h2 class="section-title">Recommendations</h2>
+            
+            <ul class="recommendation-list">
+                <li>
+                    <strong>1. Improve Click-to-Open Rate</strong><br>
+                    Current 6.9% CTOR is below the 10% nonprofit benchmark. Emails are being opened but content isn't compelling action. <em>Solution: Shorter emails, clearer single CTA above the fold, more video content.</em>
+                </li>
+                <li>
+                    <strong>2. Reduce Unsubscribe Rate</strong><br>
+                    0.6% per email (3x industry average) means losing ~60 subscribers monthly. Over a year, this is 7-8% list churn. <em>Solution: Segment list by engagement, send less frequently to low-engagers, add preference center.</em>
+                </li>
+                <li>
+                    <strong>3. Double Down on Video</strong><br>
+                    Video-focused emails achieve highest CTOR (8-9%). <em>Solution: Lead with video thumbnail and "Watch" CTA in every email. Consider video-first strategy.</em>
+                </li>
+                <li>
+                    <strong>4. Standardize "By the Numbers" Reports</strong><br>
+                    Monthly ambulance reports consistently perform well. <em>Solution: Create template, branded design, reliable monthly cadence. This is your signature content.</em>
+                </li>
+                <li>
+                    <strong>5. Remove Social Links from Email Body</strong><br>
+                    Social clicks average 1-29 per email — not worth the visual clutter. <em>Solution: Move social icons to footer only. Focus email real estate on primary CTA.</em>
+                </li>
+                <li>
+                    <strong>6. Segment Year-End Appeals</strong><br>
+                    "Thank You for a Year of Impact" got 46% opens but only 3.2% CTOR. <em>Solution: For gratitude emails, add clear donation CTA. Split test: pure gratitude vs gratitude + ask.</em>
+                </li>
+                <li>
+                    <strong>7. Grow the List</strong><br>
+                    Net growth of only 2% YoY won't sustain the donor base. <em>Solution: Add email capture to website (popup, exit intent), create lead magnet (Burma situation report), cross-promote on social.</em>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Summary -->
+        <section class="section">
+            <h2 class="section-title">Bottom Line</h2>
+            
+            <div class="insight-box" style="font-size: 1.1rem;">
+                <h4>Stronghold's email program is healthy but has untapped potential.</h4>
+                <p style="margin-top: 1rem;">
+                    <strong>The good:</strong> 99% deliverability, 39% open rates (exceptional), consistent content calendar, engaged core audience.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>The opportunity:</strong> Converting opens to clicks. With 4,000 people opening each email but only 250-350 clicking, there's a 10x engagement opportunity sitting in the inbox.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Priority fix:</strong> Shorten emails, lead with video, single clear CTA. Test this on the next 3 campaigns and measure CTOR improvement.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="brand">★ PREPARED FOR STRONGHOLD RESCUE & RELIEF ★</div>
+        <p style="margin-top: 1rem; opacity: 0.5;">Discovery Report · February 2026</p>
+    </footer>
+</body>
+</html>
