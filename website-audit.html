@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website UX Audit — Stronghold Discovery</title>
+    <style>
+        :root {
+            --gold: #C9A227;
+            --gold-light: #E8D48A;
+            --navy: #1a2744;
+            --navy-light: #2d3a52;
+            --white: #ffffff;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-600: #6c757d;
+            --green: #28a745;
+            --red: #dc3545;
+            --yellow: #ffc107;
+            --orange: #fd7e14;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .nav {
+            background: rgba(0,0,0,0.3);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-brand {
+            color: var(--gold);
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 2rem;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover { opacity: 1; }
+
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .score-card {
+            background: linear-gradient(135deg, var(--navy-light) 0%, rgba(201, 162, 39, 0.1) 100%);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border: 2px solid var(--gold);
+        }
+
+        .score-card .score {
+            font-size: 6rem;
+            font-weight: bold;
+            color: var(--orange);
+        }
+
+        .score-card .score-label {
+            font-size: 1.5rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .score-card .score-breakdown {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .score-item {
+            text-align: center;
+        }
+
+        .score-item .value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .score-item .label {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .grade-a { color: var(--green); }
+        .grade-b { color: #8BC34A; }
+        .grade-c { color: var(--yellow); }
+        .grade-d { color: var(--orange); }
+        .grade-f { color: var(--red); }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: var(--navy-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .metric-card h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .metric-card .grade {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .metric-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(201, 162, 39, 0.1) 0%, rgba(201, 162, 39, 0.05) 100%);
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .insight-box h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .critical-box {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.15) 0%, rgba(220, 53, 69, 0.05) 100%);
+            border-left: 4px solid var(--red);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .critical-box h4 {
+            color: var(--red);
+            margin-bottom: 0.5rem;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.15) 0%, rgba(40, 167, 69, 0.05) 100%);
+            border-left: 4px solid var(--green);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .success-box h4 {
+            color: var(--green);
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .comparison-table th {
+            background: var(--navy-light);
+            color: var(--gold);
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .check { color: var(--green); }
+        .cross { color: var(--red); }
+        .partial { color: var(--yellow); }
+
+        .issue-list {
+            list-style: none;
+        }
+
+        .issue-list li {
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--navy-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--red);
+        }
+
+        .issue-list li.warning {
+            border-left-color: var(--yellow);
+        }
+
+        .issue-list li.success {
+            border-left-color: var(--green);
+        }
+
+        .issue-list li strong {
+            color: var(--gold);
+        }
+
+        .issue-list li .severity {
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            font-weight: bold;
+        }
+
+        .severity.critical { background: rgba(220, 53, 69, 0.2); color: var(--red); }
+        .severity.high { background: rgba(253, 126, 20, 0.2); color: var(--orange); }
+        .severity.medium { background: rgba(255, 193, 7, 0.2); color: var(--yellow); }
+        .severity.low { background: rgba(40, 167, 69, 0.2); color: var(--green); }
+
+        .best-practice {
+            background: var(--navy-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .best-practice h5 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .best-practice .org {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .recommendation-card {
+            background: var(--navy-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid var(--gold);
+        }
+
+        .recommendation-card .priority {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
+
+        .priority.p1 { background: var(--red); color: white; }
+        .priority.p2 { background: var(--orange); color: white; }
+        .priority.p3 { background: var(--yellow); color: black; }
+
+        .recommendation-card h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(0,0,0,0.2);
+            margin-top: 3rem;
+        }
+
+        .footer .brand {
+            color: var(--gold);
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .two-col { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .score-card .score { font-size: 4rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav-brand">★ STRONGHOLD DISCOVERY</a>
+        <div class="nav-links">
+            <a href="index.html">Overview</a>
+            <a href="donors.html">Donors</a>
+            <a href="email-report.html">Email</a>
+            <a href="website-audit.html">Website</a>
+            <a href="seo.html">SEO</a>
+            <a href="recommendations.html">Recommendations</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Website UX Audit</h1>
+        <p>A donor-centric analysis of strongholdrescue.org against nonprofit best practices</p>
+    </section>
+
+    <div class="container">
+        <!-- Overall Score -->
+        <section class="section">
+            <div class="score-card">
+                <div class="score-label">Overall Website Score</div>
+                <div class="score grade-d">4.5/10</div>
+                <p style="margin-top: 1rem; opacity: 0.8;">Significant gaps in donor experience, trust signals, and conversion optimization</p>
+                
+                <div class="score-breakdown">
+                    <div class="score-item">
+                        <div class="value grade-f">2/10</div>
+                        <div class="label">Donation Flow</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="value grade-d">4/10</div>
+                        <div class="label">Trust Signals</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="value grade-c">5/10</div>
+                        <div class="label">Messaging</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="value grade-c">6/10</div>
+                        <div class="label">Content</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="value grade-d">4/10</div>
+                        <div class="label">UX/Navigation</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="value grade-b">7/10</div>
+                        <div class="label">Visual Design</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Critical Issues -->
+        <section class="section">
+            <h2 class="section-title">🚨 Critical Issues</h2>
+            
+            <div class="critical-box">
+                <h4>Multiple Broken Links in Navigation</h4>
+                <p>The following pages return 404 errors:</p>
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li><code>/our-work</code> — Main navigation item is broken</li>
+                    <li><code>/our-work/emergency-medicine</code> — 404</li>
+                    <li><code>/our-work/refugee-protection</code> — 404</li>
+                    <li><code>/our-work/humanitarian-relief</code> — 404</li>
+                    <li><code>/about</code> — No about page exists</li>
+                </ul>
+                <p style="margin-top: 0.5rem;"><strong>Impact:</strong> Donors clicking "Our Work" in the menu hit a dead end. This destroys trust and kills conversions.</p>
+            </div>
+
+            <div class="critical-box">
+                <h4>No Dedicated Donation Page</h4>
+                <p><code>/donate</code> redirects to homepage with a modal. There is no standalone donation page with:</p>
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li>Impact statements</li>
+                    <li>Suggested giving levels with descriptions</li>
+                    <li>Social proof (donor count, testimonials)</li>
+                    <li>Trust badges (Charity Navigator, GuideStar)</li>
+                    <li>Security assurance</li>
+                </ul>
+                <p style="margin-top: 0.5rem;"><strong>Impact:</strong> Donors arrive ready to give but see only a generic form with no emotional reinforcement.</p>
+            </div>
+
+            <div class="critical-box">
+                <h4>No Impact Numbers on Homepage</h4>
+                <p>Charity: Water shows "197,000 water projects" and "20,763,856 people served" prominently. Stronghold shows zero quantified impact on the homepage despite having powerful metrics (1,000+ ambulance runs, 68+ patients/month).</p>
+                <p style="margin-top: 0.5rem;"><strong>Impact:</strong> Donors can't quickly understand the scale or effectiveness of the organization.</p>
+            </div>
+        </section>
+
+        <!-- Comparison to Best Practices -->
+        <section class="section">
+            <h2 class="section-title">Stronghold vs. Best-in-Class Nonprofits</h2>
+            
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Stronghold</th>
+                            <th>Charity: Water</th>
+                            <th>St. Jude</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Hero CTA</strong></td>
+                            <td class="cross">❌ "Become a Supporter" (weak)</td>
+                            <td class="check">✅ "Give Water" (action-oriented)</td>
+                            <td class="check">✅ "Donate Now"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Impact Numbers</strong></td>
+                            <td class="cross">❌ None visible</td>
+                            <td class="check">✅ 197K projects, 20M people</td>
+                            <td class="check">✅ Survival rates, research stats</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dedicated Donate Page</strong></td>
+                            <td class="cross">❌ Modal only</td>
+                            <td class="check">✅ Full page with options</td>
+                            <td class="check">✅ Multiple giving paths</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Trust Badges</strong></td>
+                            <td class="cross">❌ None</td>
+                            <td class="check">✅ BBB, Charity Navigator</td>
+                            <td class="check">✅ Multiple certifications</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Donor Testimonials</strong></td>
+                            <td class="cross">❌ None</td>
+                            <td class="check">✅ "Spring" member stories</td>
+                            <td class="check">✅ Family stories</td>
+                        </tr>
+                        <tr>
+                            <td><strong>100% Model Messaging</strong></td>
+                            <td class="partial">⚠️ Buried in copy</td>
+                            <td class="check">✅ Above the fold, prominent</td>
+                            <td class="check">✅ Clear allocation messaging</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Video on Homepage</strong></td>
+                            <td class="cross">❌ No</td>
+                            <td class="check">✅ Yes, autoplay hero</td>
+                            <td class="check">✅ Patient stories</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monthly Giving Program</strong></td>
+                            <td class="partial">⚠️ "Micro-donations" (weak framing)</td>
+                            <td class="check">✅ "The Spring" (branded, premium)</td>
+                            <td class="check">✅ "Partners in Hope"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mobile Optimization</strong></td>
+                            <td class="partial">⚠️ Functional but basic</td>
+                            <td class="check">✅ Excellent</td>
+                            <td class="check">✅ Excellent</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email Capture</strong></td>
+                            <td class="cross">❌ Separate page only</td>
+                            <td class="check">✅ Homepage + exit intent</td>
+                            <td class="check">✅ Multiple touchpoints</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Detailed Analysis: Homepage -->
+        <section class="section">
+            <h2 class="section-title">Homepage Analysis</h2>
+            
+            <div class="two-col">
+                <div>
+                    <h4 style="color: var(--red); margin-bottom: 1rem;">❌ What's Missing</h4>
+                    <ul class="issue-list">
+                        <li>
+                            <strong>No emotional hook above the fold</strong>
+                            <span class="severity critical">Critical</span>
+                            <p style="margin-top: 0.5rem;">First impression is text-heavy mission statement. No human face, no story, no urgency.</p>
+                        </li>
+                        <li>
+                            <strong>Weak primary CTA</strong>
+                            <span class="severity high">High</span>
+                            <p style="margin-top: 0.5rem;">"Become a Supporter" is passive. "Donate Now" or "Save Lives Today" drives action.</p>
+                        </li>
+                        <li>
+                            <strong>No social proof</strong>
+                            <span class="severity high">High</span>
+                            <p style="margin-top: 0.5rem;">No donor count, no testimonials, no "Join 10,000 supporters" messaging.</p>
+                        </li>
+                        <li>
+                            <strong>No urgency or timeliness</strong>
+                            <span class="severity medium">Medium</span>
+                            <p style="margin-top: 0.5rem;">Content feels static. No "This week in Burma" or current crisis framing.</p>
+                        </li>
+                        <li class="warning">
+                            <strong>T-shirt incentive may cheapen the cause</strong>
+                            <span class="severity medium">Medium</span>
+                            <p style="margin-top: 0.5rem;">"Get a FREE t-shirt" feels transactional, not transformational. Consider if this aligns with brand.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--green); margin-bottom: 1rem;">✅ What's Working</h4>
+                    <ul class="issue-list">
+                        <li class="success">
+                            <strong>Clean, professional visual design</strong>
+                            <p style="margin-top: 0.5rem;">Navy/gold palette conveys military credibility. Typography is readable.</p>
+                        </li>
+                        <li class="success">
+                            <strong>Clear mission statement</strong>
+                            <p style="margin-top: 0.5rem;">"Veterans in conflict zones" is differentiating and memorable.</p>
+                        </li>
+                        <li class="success">
+                            <strong>"Charity With Dignity" concept</strong>
+                            <p style="margin-top: 0.5rem;">Training locals vs. dependency is a compelling value proposition.</p>
+                        </li>
+                        <li class="success">
+                            <strong>EIN and 501(c)(3) status visible</strong>
+                            <p style="margin-top: 0.5rem;">Footer includes tax ID for donor confidence.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Messaging Analysis -->
+        <section class="section">
+            <h2 class="section-title">Messaging Analysis</h2>
+            
+            <div class="critical-box">
+                <h4>The "Micro-Donation" Problem</h4>
+                <p>Current messaging emphasizes smallness: <em>"small monthly micro-donations that won't break the bank"</em> and <em>"support for just 50 cents a day."</em></p>
+                <p style="margin-top: 1rem;"><strong>The issue:</strong> This anchor donors to give LESS. If someone planned to give $50/month, you just told them $15 is plenty.</p>
+                <p style="margin-top: 0.5rem;"><strong>Best practice:</strong> Charity: Water's "The Spring" monthly program emphasizes IMPACT, not affordability. They show what $40/month accomplishes, making donors feel generous — not cheap.</p>
+            </div>
+
+            <div class="insight-box">
+                <h4>Donor-Centric Messaging Principles</h4>
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li><strong>Make the donor the hero</strong> — "YOU save lives" not "WE save lives"</li>
+                    <li><strong>Show specific impact</strong> — "$15 provides medical supplies for one ambulance run"</li>
+                    <li><strong>Create belonging</strong> — "Join 10,247 monthly supporters" (use actual number)</li>
+                    <li><strong>Urgency without desperation</strong> — "Families are waiting" not "We're desperate"</li>
+                </ul>
+            </div>
+
+            <div class="two-col" style="margin-top: 1.5rem;">
+                <div class="best-practice">
+                    <h5>❌ Current Stronghold Copy</h5>
+                    <p style="opacity: 0.8; font-style: italic;">"We encourage people to support our mission with small monthly micro-donations that won't break the bank."</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--red);">Focus: Organization's needs, smallness</p>
+                </div>
+                <div class="best-practice">
+                    <h5>✅ Donor-Centric Rewrite</h5>
+                    <p style="opacity: 0.8; font-style: italic;">"Your monthly gift keeps ambulances running and medics equipped — saving lives every single day you're a supporter."</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--green);">Focus: Donor's impact, ongoing value</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Flow Analysis -->
+        <section class="section">
+            <h2 class="section-title">Donation Flow Analysis</h2>
+            
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <h4>Entry Point <span class="grade severity critical">FAIL</span></h4>
+                    <p>No visible "Donate" button in main navigation. Only "Become a Supporter" which sounds like volunteering, not giving.</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Landing Experience <span class="grade severity critical">FAIL</span></h4>
+                    <p>/donate redirects to homepage with a modal overlay. No dedicated page with impact messaging or social proof.</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Gift Options <span class="grade severity high">WEAK</span></h4>
+                    <p>Anchors at $15/month ("50 cents a day"). No tiered giving levels with impact descriptions.</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Trust at Point of Gift <span class="grade severity high">WEAK</span></h4>
+                    <p>No security badges, no "100% goes to the mission" messaging near the form, no donor count.</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Post-Donation <span class="grade severity medium">UNKNOWN</span></h4>
+                    <p>Unable to test confirmation page and thank-you experience without completing donation.</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Recurring Emphasis <span class="grade severity low">OK</span></h4>
+                    <p>Monthly giving is positioned as the default, which is good for retention.</p>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <h4>Best-in-Class Donation Flow: Charity: Water</h4>
+                <ol style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li><strong>Homepage:</strong> "Give Water" button prominent in navigation</li>
+                    <li><strong>Dedicated page:</strong> Full /donate page with impact calculator</li>
+                    <li><strong>Tiered options:</strong> $40/month ("provide water for one person every month")</li>
+                    <li><strong>Trust messaging:</strong> "100% funds water projects" with trust badges</li>
+                    <li><strong>Social proof:</strong> "Join The Spring" community with member count</li>
+                    <li><strong>Follow-up:</strong> GPS coordinates and photos of funded projects</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Navigation & UX -->
+        <section class="section">
+            <h2 class="section-title">Navigation & UX Issues</h2>
+            
+            <ul class="issue-list">
+                <li>
+                    <strong>Broken "Our Work" section</strong>
+                    <span class="severity critical">Critical</span>
+                    <p style="margin-top: 0.5rem;">Main nav item leads to 404. Submenu items (Emergency Medicine, Refugee Protection, Humanitarian Relief) all broken.</p>
+                </li>
+                <li>
+                    <strong>No "About" or "Team" page</strong>
+                    <span class="severity high">High</span>
+                    <p style="margin-top: 0.5rem;">Donors want to know who they're giving to. The founder (Ephraim Mattos) has a compelling story but it's only on the Media page via external podcasts.</p>
+                </li>
+                <li class="warning">
+                    <strong>Newsletter vs. Updates confusion</strong>
+                    <span class="severity medium">Medium</span>
+                    <p style="margin-top: 0.5rem;">/newsletter is signup form, /updates is blog. "Newsletter" in nav goes to /updates. Confusing IA.</p>
+                </li>
+                <li class="warning">
+                    <strong>Footer links broken</strong>
+                    <span class="severity medium">Medium</span>
+                    <p style="margin-top: 0.5rem;">Footer shows "Resources" and "Support Stronghold" sections but several links lead to 404s.</p>
+                </li>
+                <li class="warning">
+                    <strong>No search functionality apparent</strong>
+                    <span class="severity low">Low</span>
+                    <p style="margin-top: 0.5rem;">With growing content library, search would help donors find specific updates.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Trust Signals -->
+        <section class="section">
+            <h2 class="section-title">Trust Signals Audit</h2>
+            
+            <div class="two-col">
+                <div>
+                    <h4 style="color: var(--gold); margin-bottom: 1rem;">Present ✓</h4>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>501(c)(3) status with EIN (83-2711117)</li>
+                        <li>Physical address visible</li>
+                        <li>Phone number provided</li>
+                        <li>Form 990s available (2019-2024)</li>
+                        <li>Monthly "By the Numbers" reports</li>
+                        <li>Founder has media presence (Jocko, BRCC)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--red); margin-bottom: 1rem;">Missing ✗</h4>
+                    <ul style="margin-left: 1.5rem;">
+                        <li>Charity Navigator rating/badge</li>
+                        <li>GuideStar/Candid seal</li>
+                        <li>BBB Wise Giving Alliance</li>
+                        <li>Donor testimonials</li>
+                        <li>Board of directors page</li>
+                        <li>Annual report (beyond Form 990)</li>
+                        <li>Third-party audited financials</li>
+                        <li>Donor/supporter count</li>
+                        <li>Security badges on donation form</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="insight-box" style="margin-top: 1.5rem;">
+                <h4>Why Trust Signals Matter</h4>
+                <p>According to nonprofit research, <strong>82% of donors</strong> say they research an organization before giving. <strong>70% check</strong> Charity Navigator or similar rating sites. Missing these signals costs donations — especially from first-time and major donors.</p>
+            </div>
+        </section>
+
+        <!-- Content Analysis -->
+        <section class="section">
+            <h2 class="section-title">Content Analysis</h2>
+            
+            <div class="success-box">
+                <h4>The "By the Numbers" Series is Excellent</h4>
+                <p>Monthly ambulance reports with patient counts, trip data, and injury types provide exactly the transparency donors want. This is Stronghold's content strength — it should be featured more prominently.</p>
+            </div>
+
+            <div class="insight-box">
+                <h4>Content Strengths</h4>
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li><strong>Video content:</strong> Field footage is compelling and differentiating</li>
+                    <li><strong>Regular updates:</strong> Monthly cadence builds donor trust</li>
+                    <li><strong>Data transparency:</strong> "By the Numbers" reports are best-in-class</li>
+                    <li><strong>Founder story:</strong> Mosul rescue story is powerful (but buried on Media page)</li>
+                </ul>
+            </div>
+
+            <div class="critical-box">
+                <h4>Content Gaps</h4>
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li><strong>No beneficiary stories:</strong> Who has been saved? Names, faces, outcomes.</li>
+                    <li><strong>No donor stories:</strong> Why do supporters give? What motivates them?</li>
+                    <li><strong>No "Where does my money go?" page:</strong> Financial breakdown visualization</li>
+                    <li><strong>No team/about page:</strong> Who are the operators? What's their background?</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Priority Recommendations -->
+        <section class="section">
+            <h2 class="section-title">Priority Recommendations</h2>
+            
+            <div class="recommendation-card">
+                <div class="priority p1">P1 — This Week</div>
+                <h4>Fix Broken Navigation</h4>
+                <p>The "Our Work" section is a critical donor journey. Either build out these pages or remove from navigation immediately. Broken links signal an amateur organization.</p>
+            </div>
+
+            <div class="recommendation-card">
+                <div class="priority p1">P1 — This Week</div>
+                <h4>Create Dedicated Donation Page</h4>
+                <p>Build a standalone /donate page with:</p>
+                <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                    <li>Emotional headline: "Your gift saves lives in Burma"</li>
+                    <li>Impact levels: "$25 = 1 ambulance run", "$100 = medical supplies for a week"</li>
+                    <li>Trust badges and 100% allocation messaging</li>
+                    <li>Donor count or social proof element</li>
+                </ul>
+            </div>
+
+            <div class="recommendation-card">
+                <div class="priority p1">P1 — This Week</div>
+                <h4>Add Impact Numbers to Homepage</h4>
+                <p>Create a metrics bar: "1,000+ Ambulance Runs | 3,000+ Patients Served | Operating in Burma Since 2023"</p>
+            </div>
+
+            <div class="recommendation-card">
+                <div class="priority p2">P2 — This Month</div>
+                <h4>Rebrand "Micro-Donations"</h4>
+                <p>Create a named monthly giving program (like "The Frontline" or "Burma Relief Corps"). Position as community membership, not charity. Remove "won't break the bank" messaging.</p>
+            </div>
+
+            <div class="recommendation-card">
+                <div class="priority p2">P2 — This Month</div>
+                <h4>Build Team/About Page</h4>
+                <p>Feature Ephraim's story prominently. Include photos of operators (faces can be obscured for security). Show the humans behind the mission.</p>
+            </div>
+
+            <div class="recommendation-card">
+                <div class="priority p2">P2 — This Month</div>
+                <h4>Apply for Charity Navigator Rating</h4>
+                <p>With 6 years of 990s available, Stronghold likely qualifies. A rating badge is instant credibility for major donors.</p>
+            </div>
+
+            <div class="recommendation-card">
+                <div class="priority p3">P3 — This Quarter</div>
+                <h4>Add Exit-Intent Email Capture</h4>
+                <p>Capture visitors who don't donate. Offer "Weekly Burma Update" or "Monthly Impact Report" as lead magnet.</p>
+            </div>
+
+            <div class="recommendation-card">
+                <div class="priority p3">P3 — This Quarter</div>
+                <h4>Create Beneficiary Stories</h4>
+                <p>Document 3-5 patient stories (with appropriate consent/anonymization). "Meet Aung, whose life was saved by a Stronghold ambulance run."</p>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section class="section">
+            <h2 class="section-title">Bottom Line</h2>
+            
+            <div class="insight-box" style="font-size: 1.1rem;">
+                <h4>The site looks professional but doesn't convert.</h4>
+                <p style="margin-top: 1rem;">
+                    <strong>Core problem:</strong> Stronghold is doing incredible work but the website doesn't communicate it effectively to donors. The broken navigation, missing donation page, and lack of impact numbers mean visitors can't easily understand what they're supporting or how to give.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Biggest opportunity:</strong> The "By the Numbers" content and video footage are genuinely best-in-class. Bringing these to the homepage and donation experience would dramatically improve conversion.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Quick wins available:</strong> Fixing broken links and adding a dedicated donate page are P1 priorities that could improve conversion this month.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="brand">★ PREPARED FOR STRONGHOLD RESCUE & RELIEF ★</div>
+        <p style="margin-top: 1rem; opacity: 0.5;">Discovery Report · February 2026</p>
+    </footer>
+</body>
+</html>
